@@ -1,0 +1,26 @@
+﻿<local:OpdrWindow x:Class="GroeneOpdrachten.WinOpdr6"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GroeneOpdrachten"
+        mc:Ignorable="d"
+        Title="" Height="391" Width="328" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight">
+    <Grid Background="Magenta">
+        <Grid HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" Width="320" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+            <Label x:Name="label" Content="Aantal meter:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="boxSize" HorizontalAlignment="Left" Margin="190,14,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="label1" Content="Aantal personen:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="boxPersons" HorizontalAlignment="Left" Margin="190,68,0,0" VerticalAlignment="Top" Width="120"/>
+            <Label x:Name="label2" Content="Honden:" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="boxDogs" HorizontalAlignment="Left" Margin="190,118,0,0" VerticalAlignment="Top" Width="120"/>
+            <CheckBox x:Name="boxCar" Content="Autoplaats" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="BtnCalc" Content="Berekenen" Margin="10,0,10,10" Background="#FF1ABC9C" BorderBrush="{x:Null}" Foreground="White" FontSize="24" FontWeight="Bold" Height="47" VerticalAlignment="Bottom" Click="BtnCalc_Click"/>
+            <Label x:Name="label3" Content="Van:" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top"/>
+            <DatePicker x:Name="dateStart" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" DisplayDate="{DynamicResource DateTimeNow}" DisplayDateStart="{DynamicResource DateTimeNow}" SelectedDate="{DynamicResource DateTimeNow}" CalendarClosed="DateStart_CalendarClosed"/>
+            <Label x:Name="label3_Copy" Content="Tot:" HorizontalAlignment="Left" Margin="208,205,0,0" VerticalAlignment="Top"/>
+            <DatePicker x:Name="dateEnd" Margin="0,236,10,0" VerticalAlignment="Top" DisplayDate="{DynamicResource DateTimeNow}" DisplayDateStart="{DynamicResource DateTimeNow}" SelectedDate="{DynamicResource DateTimeNow}" HorizontalAlignment="Right" Width="102"/>
+        </Grid>
+
+    </Grid>
+</local:OpdrWindow>

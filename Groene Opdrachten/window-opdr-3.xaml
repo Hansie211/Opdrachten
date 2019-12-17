@@ -1,0 +1,27 @@
+﻿<local:OpdrWindow x:Class="GroeneOpdrachten.WinOpdr3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GroeneOpdrachten"
+        mc:Ignorable="d"
+        Title="" Height="306" Width="288" ShowInTaskbar="False" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+    <Grid Background="Magenta">
+        <Grid HorizontalAlignment="Left" Height="280" VerticalAlignment="Top" Width="285" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+            <GroupBox x:Name="groupBox" Header="Soort wagen" Height="55" Margin="10,10,10,0" VerticalAlignment="Top">
+                <Grid Margin="0">
+                    <RadioButton x:Name="rbSmall" Content="Personenauto" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <RadioButton x:Name="rbLarge" Content="Personenbusje" Margin="0,9,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.235,-0.667" HorizontalAlignment="Right" Width="96"/>
+                </Grid>
+            </GroupBox>
+            <Label x:Name="label" Content="Begindatum:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
+            <DatePicker x:Name="dateStart" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" DisplayDate="{DynamicResource DateTimeNow}" DisplayDateStart="{DynamicResource DateTimeNow}" SelectedDate="{DynamicResource DateTimeNow}" CalendarClosed="DateStart_CalendarClosed"/>
+            <Label x:Name="label_Copy" Content="Einddatum:" HorizontalAlignment="Left" Margin="147,80,0,0" VerticalAlignment="Top"/>
+            <DatePicker x:Name="dateEnd" Margin="147,111,0,0" VerticalAlignment="Top" SelectedDate="{DynamicResource DateTimeNow}" FirstDayOfWeek="Monday" DisplayDateStart="{DynamicResource DateTimeNow}" DisplayDate="{DynamicResource DateTimeNow}" HorizontalAlignment="Left" Width="128"/>
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Text="10"/>
+            <Label x:Name="label_Copy1" Content="Aantal km:" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="buttonCalc" Content="Berekenen" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top" Width="265" Height="47" Background="#FF1ABC9C" BorderBrush="{x:Null}" Foreground="White" FontSize="24" FontWeight="Bold" Click="ButtonCalc_Click"/>
+        </Grid>
+
+    </Grid>
+</local:OpdrWindow>

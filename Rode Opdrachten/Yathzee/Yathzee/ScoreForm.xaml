@@ -1,0 +1,17 @@
+﻿<Window x:Class="Yathzee.ScoreForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Yathzee"
+        xmlns:scores="clr-namespace:Yathzee.Scores"
+        mc:Ignorable="d"
+        Title="Score" Height="806" Width="483" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,0">
+        <Grid x:Name="gridMain" Height="775" VerticalAlignment="Top" HorizontalAlignment="Left" Width="480">
+            <WebBrowser x:Name="browser" HorizontalAlignment="Left" Height="710" Margin="0,0,0,0" VerticalAlignment="Top" Width="480"/>
+            <TextBlock x:Name="btnNext" Height="50" Margin="10,0,10,10" TextWrapping="Wrap" Text="VOLGEND SPEL" VerticalAlignment="Bottom" HorizontalAlignment="Center" Cursor="Hand" MouseLeftButtonDown="click_btnNext" FontSize="36" FontWeight="Bold"/>
+            <Image x:Name="btnSave" HorizontalAlignment="Left" Height="24" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="24" Source="save.png" Cursor="Hand" MouseLeftButtonDown="click_btnSave" ToolTip="Opslaan"/>
+        </Grid>
+    </Grid>
+</Window>

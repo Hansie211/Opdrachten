@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <style>
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 480px;
+            height: 705px;
+            font-family: Calibri, Segoe UI, sapserif;
+            font-size: 22px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            font-size: 12px;
+        }
+
+        col.score {
+            width: 40px;
+        }
+
+        td.title {
+            text-align: right;
+            font-weight: bold;
+            padding-right: 10px;
+            font-size: 1.1em;
+        }
+
+        tr {
+            background: #FFF;
+        }
+
+            tr.sum > td {
+                border-top: 2px solid black;
+            }
+
+            tr.odd {
+                background: #CCC;
+            }
+    </style>
+</head>
+<body>
+    <table id="maintable">
+        <colgroup>
+            <col class="title">
+            <col class="score">
+            <col class="score">
+            <col class="score">
+            <col class="score">
+            <col class="score">
+        </colgroup>
+        <thead>
+            <tr>
+                <th></th>
+                <th>1e spel</th>
+                <th>2e spel</th>
+                <th>3e spel</th>
+                <th>4e spel</th>
+                <th>5e spel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="odd">
+                <td class="title">ENEN</td>
+                <td>%SCORE0-0%</td>
+                <td>%SCORE1-0%</td>
+                <td>%SCORE2-0%</td>
+                <td>%SCORE3-0%</td>
+                <td>%SCORE4-0%</td>
+            </tr>
+            <tr>
+                <td class="title">TWEEËN</td>
+                <td>%SCORE0-1%</td>
+                <td>%SCORE1-1%</td>
+                <td>%SCORE2-1%</td>
+                <td>%SCORE3-1%</td>
+                <td>%SCORE4-1%</td>
+            </tr>
+            <tr class="odd">
+                <td class="title">DRIEËN</td>
+                <td>%SCORE0-2%</td>
+                <td>%SCORE1-2%</td>
+                <td>%SCORE2-2%</td>
+                <td>%SCORE3-2%</td>
+                <td>%SCORE4-2%</td>
+            </tr>
+            <tr>
+                <td class="title">VIEREN</td>
+                <td>%SCORE0-3%</td>
+                <td>%SCORE1-3%</td>
+                <td>%SCORE2-3%</td>
+                <td>%SCORE3-3%</td>
+                <td>%SCORE4-3%</td>
+            </tr>
+            <tr class="odd">
+                <td class="title">VIJVEN</td>
+                <td>%SCORE0-4%</td>
+                <td>%SCORE1-4%</td>
+                <td>%SCORE2-4%</td>
+                <td>%SCORE3-4%</td>
+                <td>%SCORE4-4%</td>
+            </tr>
+            <tr>
+                <td class="title">ZESSEN</td>
+                <td>%SCORE0-5%</td>
+                <td>%SCORE1-5%</td>
+                <td>%SCORE2-5%</td>
+                <td>%SCORE3-5%</td>
+                <td>%SCORE4-5%</td>
+            </tr>
+            <tr class="odd sum">
+                <td class="title">TOTAAL AANTAL PUNTEN</td>
+                <td>%SCORE0-UPTOT%</td>
+                <td>%SCORE1-UPTOT%</td>
+                <td>%SCORE2-UPTOT%</td>
+                <td>%SCORE3-UPTOT%</td>
+                <td>%SCORE4-UPTOT%</td>
+            </tr>
+            <tr>
+                <td class="title">BONUS</td>
+                <td>%SCORE0-UPBONUS%</td>
+                <td>%SCORE1-UPBONUS%</td>
+                <td>%SCORE2-UPBONUS%</td>
+                <td>%SCORE3-UPBONUS%</td>
+                <td>%SCORE4-UPBONUS%</td>
+            </tr>
+            <tr class="odd sum">
+                <td class="title">TOTAAL</td>
+                <td>%SCORE0-UPGTOT%</td>
+                <td>%SCORE1-UPGTOT%</td>
+                <td>%SCORE2-UPGTOT%</td>
+                <td>%SCORE3-UPGTOT%</td>
+                <td>%SCORE4-UPGTOT%</td>
+            </tr>
+            <tr>
+                <td colspan="6">&nbsp;</td>
+            </tr>
+            <tr class="odd">
+                <td class="title">THREE OF A KIND</td>
+                <td>%SCORE0-6%</td>
+                <td>%SCORE1-6%</td>
+                <td>%SCORE2-6%</td>
+                <td>%SCORE3-6%</td>
+                <td>%SCORE4-6%</td>
+            </tr>
+            <tr>
+                <td class="title">FOUR OF A KIND</td>
+                <td>%SCORE0-7%</td>
+                <td>%SCORE1-7%</td>
+                <td>%SCORE2-7%</td>
+                <td>%SCORE3-7%</td>
+                <td>%SCORE4-7%</td>
+            </tr>
+            <tr class="odd">
+                <td class="title">FULL HOUSE</td>
+                <td>%SCORE0-8%</td>
+                <td>%SCORE1-8%</td>
+                <td>%SCORE2-8%</td>
+                <td>%SCORE3-8%</td>
+                <td>%SCORE4-8%</td>
+            </tr>
+            <tr>
+                <td class="title">KLEINE STRAAT</td>
+                <td>%SCORE0-9%</td>
+                <td>%SCORE1-9%</td>
+                <td>%SCORE2-9%</td>
+                <td>%SCORE3-9%</td>
+                <td>%SCORE4-9%</td>
+            </tr>
+            <tr class="odd">
+                <td class="title">GROTE STRAAT</td>
+                <td>%SCORE0-10%</td>
+                <td>%SCORE1-10%</td>
+                <td>%SCORE2-10%</td>
+                <td>%SCORE3-10%</td>
+                <td>%SCORE4-10%</td>
+            </tr>
+            <tr>
+                <td class="title">YAHTZEE</td>
+                <td>%SCORE0-11%</td>
+                <td>%SCORE1-11%</td>
+                <td>%SCORE2-11%</td>
+                <td>%SCORE3-11%</td>
+                <td>%SCORE4-11%</td>
+            </tr>
+            <tr class="odd">
+                <td class="title">KANS</td>
+                <td>%SCORE0-12%</td>
+                <td>%SCORE1-12%</td>
+                <td>%SCORE2-12%</td>
+                <td>%SCORE3-12%</td>
+                <td>%SCORE4-12%</td>
+            </tr>
+            <tr class="sum">
+                <td class="title">TOTAAL AANTAL PUNTEN</td>
+                <td>%SCORE0-LOWTOT%</td>
+                <td>%SCORE1-LOWTOT%</td>
+                <td>%SCORE2-LOWTOT%</td>
+                <td>%SCORE3-LOWTOT%</td>
+                <td>%SCORE4-LOWTOT%</td>
+            </tr>
+            <tr class="odd">
+                <td colspan="6">&nbsp;</td>
+            </tr>
+            <tr class="sum">
+                <td class="title">TOTAAL</td>
+                <td>%SCORE0-GTOT%</td>
+                <td>%SCORE1-GTOT%</td>
+                <td>%SCORE2-GTOT%</td>
+                <td>%SCORE3-GTOT%</td>
+                <td>%SCORE4-GTOT%</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

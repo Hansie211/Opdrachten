@@ -1,0 +1,12 @@
+﻿<Application
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GroeneOpdrachten"
+             xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="GroeneOpdrachten.App"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <System:DateTime x:Key="DateTimeNow">08/28/2019 16:50:08</System:DateTime>
+
+    </Application.Resources>
+</Application>

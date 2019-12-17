@@ -1,0 +1,30 @@
+﻿<Window x:Class="Toren_van_Hanoi.GameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Toren_van_Hanoi"
+        mc:Ignorable="d" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MouseRightButtonDown="canvas_MouseRightButtonDown">
+    <Grid MouseRightButtonDown="canvas_MouseRightButtonDown">
+        <Grid MouseRightButtonDown="canvas_MouseRightButtonDown" Margin="0">
+            <Label x:Name="labelFinish" Content="You won!" Panel.ZIndex="1" FontWeight="Bold" FontSize="100" Foreground="Red" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" MouseRightButtonDown="labelWon_MouseRightButtonDown" MouseLeftButtonDown="labelWon_MouseRightButtonDown" HorizontalAlignment="Left" Width="640" Height="480" VerticalAlignment="Top" Background="{x:Null}" Cursor="Hand" Visibility="Hidden">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="30"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+            <Canvas x:Name="canvas" Height="480" VerticalAlignment="Top" MouseRightButtonDown="canvas_MouseRightButtonDown" Margin="0"/>
+            <Label x:Name="labelMoves" Content="Score: 0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            <Label x:Name="labelTime" Content="Time: 0" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+
+        </Grid>
+
+    </Grid>
+</Window>
