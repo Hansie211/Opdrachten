@@ -1,45 +1,20 @@
-﻿namespace Vlaggen {
-    using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-    /// <summary>
-    /// Defines the <see cref="Quiz" />
-    /// </summary>
+namespace Vlaggen {
     public class Quiz {
-        /// <summary>
-        /// Defines the MAX_QUIZ_QUESTION
-        /// </summary>
+
         public const int MAX_QUIZ_QUESTION = 10;
 
-        /// <summary>
-        /// Defines the questionAnswers
-        /// </summary>
         public int[] questionAnswers;
-
-        /// <summary>
-        /// Defines the userAnswers
-        /// </summary>
         public int[] userAnswers;
-
-        /// <summary>
-        /// Defines the questionTypes
-        /// </summary>
         public int[] questionTypes;
-
-        /// <summary>
-        /// Defines the currentQuestion
-        /// </summary>
         public int currentQuestion;
-
-        /// <summary>
-        /// Defines the correctAnswerCount
-        /// </summary>
         public int correctAnswerCount;
 
-        /// <summary>
-        /// The answerQuestion
-        /// </summary>
-        /// <param name="answer">The answer<see cref="int"/></param>
-        /// <returns>The <see cref="Boolean"/></returns>
         public Boolean answerQuestion( int answer ) {
 
             userAnswers[ currentQuestion ] = answer;
@@ -53,28 +28,16 @@
             return correct;
         }
 
-        /// <summary>
-        /// The quizFinished
-        /// </summary>
-        /// <returns>The <see cref="Boolean"/></returns>
         public Boolean quizFinished() {
 
             return currentQuestion >= MAX_QUIZ_QUESTION;
         }
 
-        /// <summary>
-        /// The getCurrentAnswer
-        /// </summary>
-        /// <returns>The <see cref="int"/></returns>
         public int getCurrentAnswer() {
 
             return questionAnswers[ currentQuestion ];
         }
 
-        /// <summary>
-        /// The nextQuestion
-        /// </summary>
-        /// <returns>The <see cref="int"/></returns>
         public int nextQuestion() {
 
             currentQuestion++;
@@ -86,9 +49,6 @@
             return getCurrentAnswer();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Quiz"/> class.
-        /// </summary>
         public Quiz() {
 
             correctAnswerCount  = 0;
@@ -108,5 +68,6 @@
             questionTypes = new int[ MAX_QUIZ_QUESTION ] { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 };
             questionTypes = Randomizer.randomize( questionTypes );
         }
+
     }
 }

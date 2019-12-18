@@ -1,36 +1,24 @@
-﻿namespace Vlaggen {
-    using System;
-    using System.Windows.Media.Imaging;
-    using System.Xml;
-    using Bitmap = System.Drawing.Bitmap;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
+using System.Xml;
 
-    /// <summary>
-    /// Defines the <see cref="Country" />
-    /// </summary>
+using Bitmap = System.Drawing.Bitmap;
+
+namespace Vlaggen {
     struct Country {
-        /// <summary>
-        /// Defines the name
-        /// </summary>
-        public string name;
 
-        /// <summary>
-        /// Defines the flag
-        /// </summary>
+        public string name;
         public BitmapSource flag;
     }
 
-    /// <summary>
-    /// Defines the <see cref="CountryManager" />
-    /// </summary>
-    internal static class CountryManager {
-        /// <summary>
-        /// Defines the countries
-        /// </summary>
+    static class CountryManager {
+
         public static Country[] countries;
 
-        /// <summary>
-        /// The init
-        /// </summary>
         public static void init() {
 
             XmlDocument XML = new XmlDocument();
@@ -56,19 +44,11 @@
             }
         }
 
-        /// <summary>
-        /// The randomCountry
-        /// </summary>
-        /// <returns>The <see cref="int"/></returns>
         public static int randomCountry() {
 
             return Randomizer.randomNumber( countries.Length );
         }
 
-        /// <summary>
-        /// The randomCountries
-        /// </summary>
-        /// <returns>The <see cref="int[]"/></returns>
         public static int[] randomCountries() {
 
             return Randomizer.randomizeIndex( countries );

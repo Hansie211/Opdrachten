@@ -1,46 +1,43 @@
-﻿namespace Vlaggen {
-    using System;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Media;
-    using Brushes = System.Windows.Media.Brushes;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Xml;
+using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
+
+
+namespace Vlaggen {
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    internal class MarkHandler {
-        /// <summary>
-        /// Defines the marks
-        /// </summary>
+    /// 
+
+    class MarkHandler {
+
         public Grid[] marks;
 
-        /// <summary>
-        /// Defines the colorEmpty
-        /// </summary>
         public SolidColorBrush colorEmpty       = Brushes.Orange;
-
-        /// <summary>
-        /// Defines the colorCorrect
-        /// </summary>
         public SolidColorBrush colorCorrect     = Brushes.Green;
-
-        /// <summary>
-        /// Defines the colorWrong
-        /// </summary>
         public SolidColorBrush colorWrong       = Brushes.Red;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MarkHandler"/> class.
-        /// </summary>
-        /// <param name="sz">The sz<see cref="int"/></param>
         public MarkHandler( int sz ) {
 
             marks = new Grid[ sz ];
         }
 
-        /// <summary>
-        /// The reset
-        /// </summary>
         public void reset() {
 
             for ( int i = 0; i < marks.Length; i++ ) {
@@ -48,49 +45,27 @@
             }
         }
 
-        /// <summary>
-        /// The add
-        /// </summary>
-        /// <param name="idx">The idx<see cref="int"/></param>
-        /// <param name="mark">The mark<see cref="Grid"/></param>
         public void add( int idx, Grid mark ) {
 
             marks[ idx ] = mark;
         }
 
-        /// <summary>
-        /// The set
-        /// </summary>
-        /// <param name="idx">The idx<see cref="int"/></param>
-        /// <param name="correct">The correct<see cref="Boolean"/></param>
         public void set( int idx, Boolean correct ) {
 
             marks[ idx ].Background = ( correct ) ? colorCorrect : colorWrong;
         }
+
     }
 
-    /// <summary>
-    /// Defines the <see cref="MainWindow" />
-    /// </summary>
+
     public partial class MainWindow : Window {
-        /// <summary>
-        /// Defines the currentIndex
-        /// </summary>
+
         private int currentIndex;
 
-        /// <summary>
-        /// Defines the quiz
-        /// </summary>
         private Quiz quiz;
-
-        /// <summary>
-        /// Defines the markHandler
-        /// </summary>
         private MarkHandler markHandler;
 
-        /// <summary>
-        /// The initDatabase
-        /// </summary>
+
         private void initDatabase() {
 
             CountryManager.init();
@@ -103,9 +78,6 @@
             boxName.SelectedIndex = 0;
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindow"/> class.
-        /// </summary>
         public MainWindow() {
             InitializeComponent();
 
@@ -128,11 +100,6 @@
             tabControl.SelectedIndex = 0;
         }
 
-        /// <summary>
-        /// The BtnNextFlag_Click
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="RoutedEventArgs"/></param>
         private void BtnNextFlag_Click( object sender, RoutedEventArgs e ) {
             int nextIndex = currentIndex + 1;
 
@@ -143,11 +110,6 @@
             boxName.SelectedIndex = nextIndex;
         }
 
-        /// <summary>
-        /// The BtnPrevFlag_Click
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="RoutedEventArgs"/></param>
         private void BtnPrevFlag_Click( object sender, RoutedEventArgs e ) {
             int nextIndex = currentIndex - 1;
 
@@ -158,11 +120,6 @@
             boxName.SelectedIndex = nextIndex;
         }
 
-        /// <summary>
-        /// The BoxName_SelectionChanged
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="SelectionChangedEventArgs"/></param>
         private void BoxName_SelectionChanged( object sender, SelectionChangedEventArgs e ) {
 
             currentIndex = ( (ComboBox)sender ).SelectedIndex;
@@ -170,9 +127,7 @@
             imgFlag.Source = CountryManager.countries[ currentIndex ].flag;
         }
 
-        /// <summary>
-        /// The askOpenQuestion
-        /// </summary>
+
         private void askOpenQuestion() {
 
             // Prepare the question
@@ -183,9 +138,6 @@
             tabControlQuiz.SelectedIndex = 0;
         }
 
-        /// <summary>
-        /// The askClosedQuestion
-        /// </summary>
         private void askClosedQuestion() {
 
             // Generate some random answers
@@ -220,9 +172,6 @@
             tabControlQuiz.SelectedIndex = 1;
         }
 
-        /// <summary>
-        /// The askQuestion
-        /// </summary>
         private void askQuestion() {
 
             switch ( quiz.questionTypes[ quiz.currentQuestion ] ) {
@@ -233,12 +182,9 @@
                     askClosedQuestion();
                     break;
             }
+
         }
 
-        /// <summary>
-        /// The answerQuestion
-        /// </summary>
-        /// <param name="answer">The answer<see cref="int"/></param>
         private void answerQuestion( int answer ) {
 
             Boolean correct = quiz.answerQuestion( answer );
@@ -260,11 +206,6 @@
             askQuestion();
         }
 
-        /// <summary>
-        /// The BtnStartQuiz_Click
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="RoutedEventArgs"/></param>
         private void BtnStartQuiz_Click( object sender, RoutedEventArgs e ) {
 
             // Generate the quiz
@@ -278,21 +219,11 @@
             askQuestion();
         }
 
-        /// <summary>
-        /// The BtnAnswerOpen_Click
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="RoutedEventArgs"/></param>
         private void BtnAnswerOpen_Click( object sender, RoutedEventArgs e ) {
 
             answerQuestion( boxNameQuestion.SelectedIndex );
         }
 
-        /// <summary>
-        /// The BtnAnswerClosed_Click
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/></param>
-        /// <param name="e">The e<see cref="RoutedEventArgs"/></param>
         private void BtnAnswerClosed_Click( object sender, RoutedEventArgs e ) {
 
             if ( (bool)rbClosedA.IsChecked ) {
