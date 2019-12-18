@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Opdracht1 {
+namespace Rekenmachine {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

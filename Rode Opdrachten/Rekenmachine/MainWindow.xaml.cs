@@ -27,7 +27,7 @@ namespace System.Windows.Controls {
     }
 }
 
-namespace Opdracht1 {
+namespace Rekenmachine {
 
     struct Stack {
 
@@ -86,7 +86,7 @@ namespace Opdracht1 {
         private Double getCurrentValue() {
 
             Double r;
-            if ( !Double.TryParse(edtMain.Text, out r) ) {
+            if ( !Double.TryParse( edtMain.Text, out r ) ) {
                 return 0;
                 //throw new Exception( String.Format("'{0}' is geen getal!", edtMain.Text));
             }
@@ -94,11 +94,11 @@ namespace Opdracht1 {
             return r;
         }
 
-        private void BtnKeypad_Click(object Sender, RoutedEventArgs e) {
+        private void BtnKeypad_Click( object Sender, RoutedEventArgs e ) {
 
             clearBox();
 
-            edtMain.Text += ((Button)Sender).Tag.ToString();
+            edtMain.Text += ( (Button)Sender ).Tag.ToString();
         }
 
         private Boolean isNumeric( Key k ) {
@@ -107,17 +107,17 @@ namespace Opdracht1 {
                 return false;
             }
 
-            if ( (k == Key.Decimal) || (k == Key.OemPeriod) ) {
+            if ( ( k == Key.Decimal ) || ( k == Key.OemPeriod ) ) {
 
                 return true;
                 //return edtMain.Text.IndexOf(".") == -1;
             }
 
-            if ( (k >= Key.D0) && (k <= Key.D9) ) {
+            if ( ( k >= Key.D0 ) && ( k <= Key.D9 ) ) {
                 return true;
             }
 
-            if ( (k >= Key.NumPad0) && (k <= Key.NumPad9) ) {
+            if ( ( k >= Key.NumPad0 ) && ( k <= Key.NumPad9 ) ) {
                 return true;
             }
 
@@ -125,40 +125,40 @@ namespace Opdracht1 {
             return false;
         }
 
-        private Boolean handleSymbolKeyPress( Key k) {
+        private Boolean handleSymbolKeyPress( Key k ) {
 
             Boolean shiftDown = isShiftDown();
 
             // Check for '+'
-            if ( (k == Key.OemPlus && shiftDown) || (k == Key.Add) ) {
+            if ( ( k == Key.OemPlus && shiftDown ) || ( k == Key.Add ) ) {
 
                 btnPlus.PerformClick();
                 return true;
             }
 
             // Check for '='
-            if ( (k == Key.OemPlus && !shiftDown ) || (k == Key.Return) ) {
+            if ( ( k == Key.OemPlus && !shiftDown ) || ( k == Key.Return ) ) {
 
                 btnEqual.PerformClick();
                 return true;
             }
 
             // Check for '-'
-            if ( (k == Key.OemMinus && !shiftDown) || (k == Key.Subtract) ) {
+            if ( ( k == Key.OemMinus && !shiftDown ) || ( k == Key.Subtract ) ) {
 
                 btnMinus.PerformClick();
                 return true;
             }
 
             // Check for '/'
-            if ( (k == Key.OemQuestion && shiftDown) || (k == Key.Divide) ) {
+            if ( ( k == Key.OemQuestion && shiftDown ) || ( k == Key.Divide ) ) {
 
                 btnDivide.PerformClick();
                 return true;
             }
 
             // Check for '*'
-            if ( (k == Key.Multiply) || (k == Key.D8 && shiftDown) ) {
+            if ( ( k == Key.Multiply ) || ( k == Key.D8 && shiftDown ) ) {
 
                 btnMult.PerformClick();
                 return true;
@@ -196,13 +196,17 @@ namespace Opdracht1 {
             switch ( op ) {
                 default:
                 case OP_PLUS:
-                    labelStack.Content += " + "; break;
+                    labelStack.Content += " + ";
+                    break;
                 case OP_MINUS:
-                    labelStack.Content += " - "; break;
+                    labelStack.Content += " - ";
+                    break;
                 case OP_MULT:
-                    labelStack.Content += " * "; break;
+                    labelStack.Content += " * ";
+                    break;
                 case OP_DIV:
-                    labelStack.Content += " / "; break;
+                    labelStack.Content += " / ";
+                    break;
             }
 
             edtMain.Clear();
@@ -237,20 +241,24 @@ namespace Opdracht1 {
             Double current = getCurrentValue();
             Double outcome;
 
-            switch( stack.op ) {
+            switch ( stack.op ) {
 
                 default:
                 case OP_PLUS:
-                    outcome = stack.value + current; break;
+                    outcome = stack.value + current;
+                    break;
 
                 case OP_MINUS:
-                    outcome = stack.value - current; break;
+                    outcome = stack.value - current;
+                    break;
 
                 case OP_MULT:
-                    outcome = stack.value * current; break;
+                    outcome = stack.value * current;
+                    break;
 
                 case OP_DIV:
-                    outcome = stack.value / current; break;
+                    outcome = stack.value / current;
+                    break;
 
             }
 
@@ -262,23 +270,23 @@ namespace Opdracht1 {
         }
 
         private void BtnClearAll_Click( object sender, RoutedEventArgs e ) {
-            
+
             clearStack();
         }
 
         private void BtnClearCurrent_Click( object sender, RoutedEventArgs e ) {
-            
+
             edtMain.Clear();
         }
 
         private void BtnPercent_Click( object sender, RoutedEventArgs e ) {
-            
-            edtMain.Text = (getCurrentValue() / 100).ToString();
+
+            edtMain.Text = ( getCurrentValue() / 100 ).ToString();
         }
 
         private void BtnPosNeg_Click( object sender, RoutedEventArgs e ) {
 
-            edtMain.Text = (getCurrentValue() * -1).ToString();
+            edtMain.Text = ( getCurrentValue() * -1 ).ToString();
         }
 
         private void BtnMemSet_Click( object sender, RoutedEventArgs e ) {
@@ -301,7 +309,7 @@ namespace Opdracht1 {
 
         private void BtnExponent_Click( object sender, RoutedEventArgs e ) {
 
-            edtMain.Text    = (getCurrentValue() * getCurrentValue()).ToString();
+            edtMain.Text    = ( getCurrentValue() * getCurrentValue() ).ToString();
             newCalculation  = true;
         }
 
@@ -385,10 +393,10 @@ namespace Opdracht1 {
             }
 
             // Check for backspace
-            if (e.Key == Key.Back ) {
+            if ( e.Key == Key.Back ) {
 
-                if ( edtMain.Text.Length > 0 ) { 
-                    edtMain.Text = edtMain.Text.Substring(0, edtMain.Text.Length - 1);
+                if ( edtMain.Text.Length > 0 ) {
+                    edtMain.Text = edtMain.Text.Substring( 0, edtMain.Text.Length - 1 );
                 }
 
                 return;
@@ -404,12 +412,12 @@ namespace Opdracht1 {
 
         private void EdtMain_TextChanged( object sender, TextChangedEventArgs e ) {
 
-            
+
             if ( edtMain.Text.Length == 0 ) {
                 return;
             }
 
-            if (edtMain.Text == "." ) {
+            if ( edtMain.Text == "." ) {
 
                 edtMain.Text = "0.";
                 return;
@@ -423,7 +431,7 @@ namespace Opdracht1 {
 
                 previousText = edtMain.Text;
             }
-            
+
             edtMain.CaretIndex  = edtMain.Text.Length;
             newCalculation = false;
 
