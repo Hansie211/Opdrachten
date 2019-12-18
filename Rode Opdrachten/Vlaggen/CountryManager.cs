@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using System.Xml;
 
+using Bitmap = System.Drawing.Bitmap;
+
 namespace Opdracht2 {
     struct Country {
 
         public string name;
-        public BitmapImage flag;
+        public BitmapSource flag;
     }
 
     static class CountryManager {
@@ -20,18 +22,25 @@ namespace Opdracht2 {
         public static void init() {
 
             XmlDocument XML = new XmlDocument();
-            XML.Load( "DB\\database.xml" );
+            XML.LoadXml( Resources.database );
 
             // Get elements
             XmlNodeList xmlCountries = XML.GetElementsByTagName("country");
-            countries = new Country[xmlCountries.Count];
+            countries = new Country[ xmlCountries.Count ];
 
             for ( int i = 0; i < xmlCountries.Count; i++ ) {
 
-                countries[i].name   = xmlCountries[i].Attributes["name"].Value;
+                countries[ i ].name = xmlCountries[ i ].Attributes[ "name" ].Value;
                 string flagFilename = xmlCountries[i].Attributes["file"].Value;
 
-                countries[i].flag = new BitmapImage( new Uri( AppDomain.CurrentDomain.BaseDirectory + flagFilename, UriKind.Absolute ) );
+                Bitmap bmp = (Bitmap)Resources.ResourceManager.GetObject( flagFilename );
+                BitmapSource source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                           bmp.GetHbitmap(),
+                           IntPtr.Zero,
+                           System.Windows.Int32Rect.Empty,
+                           BitmapSizeOptions.FromEmptyOptions() );
+
+                countries[ i ].flag = source;
             }
         }
 

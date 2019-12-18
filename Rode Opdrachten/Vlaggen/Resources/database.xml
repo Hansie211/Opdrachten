@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<country name="Afghanistan" file="_0" />
+	<country name="Albanië" file="_1" />
+	<country name="Algerije" file="_2" />
+	<country name="Andorra" file="_3" />
+	<country name="Angola" file="_4" />
+	<country name="Antigua en Barbuda" file="_5" />
+	<country name="Argentinië" file="_6" />
+	<country name="Armenië" file="_7" />
+	<country name="Australië" file="_8" />
+	<country name="Azerbeidzjan" file="_9" />
+	<country name="Bahama's" file="_10" />
+	<country name="Bahrein" file="_11" />
+	<country name="Bangladesh" file="_12" />
+	<country name="Barbados" file="_13" />
+	<country name="België" file="_14" />
+	<country name="Belize" file="_15" />
+	<country name="Benin" file="_16" />
+	<country name="Bhutan" file="_17" />
+	<country name="Bolivia" file="_18" />
+	<country name="Bosnië en Herzegovina" file="_19" />
+	<country name="Botswana" file="_20" />
+	<country name="Brazilië" file="_21" />
+	<country name="Brunei" file="_22" />
+	<country name="Bulgarije" file="_23" />
+	<country name="Burkina Faso" file="_24" />
+	<country name="Burundi" file="_25" />
+	<country name="Cambodja" file="_26" />
+	<country name="Canada" file="_27" />
+	<country name="Centraal-Afrikaanse Republiek" file="_28" />
+	<country name="Chili" file="_29" />
+	<country name="China" file="_30" />
+	<country name="Colombia" file="_31" />
+	<country name="Comoren" file="_32" />
+	<country name="Congo-Brazzaville" file="_33" />
+	<country name="Congo-Kinshasa" file="_34" />
+	<country name="Costa Rica" file="_35" />
+	<country name="Cuba" file="_36" />
+	<country name="Cyprus" file="_37" />
+	<country name="Denemarken" file="_38" />
+	<country name="Djibouti" file="_39" />
+	<country name="Dominica" file="_40" />
+	<country name="Dominicaanse Republiek" file="_41" />
+	<country name="Duitsland" file="_42" />
+	<country name="Ecuador" file="_43" />
+	<country name="Egypte" file="_44" />
+	<country name="El Salvador" file="_45" />
+	<country name="Equatoriaal-Guinea" file="_46" />
+	<country name="Eritrea" file="_47" />
+	<country name="Estland" file="_48" />
+	<country name="Ethiopië" file="_49" />
+	<country name="Fiji" file="_50" />
+	<country name="Filipijnen" file="_51" />
+	<country name="Finland" file="_52" />
+	<country name="Frankrijk" file="_53" />
+	<country name="Gabon" file="_54" />
+	<country name="Gambia" file="_55" />
+	<country name="Georgië" file="_56" />
+	<country name="Ghana" file="_57" />
+	<country name="Grenada" file="_58" />
+	<country name="Griekenland" file="_59" />
+	<country name="Guatemala" file="_60" />
+	<country name="Guinee" file="_61" />
+	<country name="Guinee-Bissau" file="_62" />
+	<country name="Guyana" file="_63" />
+	<country name="Haïti" file="_64" />
+	<country name="Honduras" file="_65" />
+	<country name="Hongarije" file="_66" />
+	<country name="Ierland" file="_67" />
+	<country name="IJsland" file="_68" />
+	<country name="India" file="_69" />
+	<country name="Indonesië" file="_70" />
+	<country name="Irak" file="_71" />
+	<country name="Iran" file="_72" />
+	<country name="Israël" file="_73" />
+	<country name="Italië" file="_74" />
+	<country name="Ivoorkust" file="_75" />
+	<country name="Jamaica" file="_76" />
+	<country name="Japan" file="_77" />
+	<country name="Jemen" file="_78" />
+	<country name="Jordanië" file="_79" />
+	<country name="Kaapverdië" file="_80" />
+	<country name="Kameroen" file="_81" />
+	<country name="Kazachstan" file="_82" />
+	<country name="Kenia" file="_83" />
+	<country name="Kirgizië" file="_84" />
+	<country name="Kiribati" file="_85" />
+	<country name="Koeweit" file="_86" />
+	<country name="Kroatië" file="_87" />
+	<country name="Laos" file="_88" />
+	<country name="Lesotho" file="_89" />
+	<country name="Letland" file="_90" />
+	<country name="Libanon" file="_91" />
+	<country name="Liberia" file="_92" />
+	<country name="Libië" file="_93" />
+	<country name="Liechtenstein" file="_94" />
+	<country name="Litouwen" file="_95" />
+	<country name="Luxemburg" file="_96" />
+	<country name="Madagaskar" file="_97" />
+	<country name="Malawi" file="_98" />
+	<country name="Maldiven" file="_99" />
+	<country name="Maleisië" file="_100" />
+	<country name="Mali" file="_101" />
+	<country name="Malta" file="_102" />
+	<country name="Marokko" file="_103" />
+	<country name="Marshalleilanden" file="_104" />
+	<country name="Mauritanië" file="_105" />
+	<country name="Mauritius" file="_106" />
+	<country name="Mexico" file="_107" />
+	<country name="Micronesia" file="_108" />
+	<country name="Moldavië" file="_109" />
+	<country name="Monaco" file="_110" />
+	<country name="Mongolië" file="_111" />
+	<country name="Montenegro" file="_112" />
+	<country name="Mozambique" file="_113" />
+	<country name="Myanmar" file="_114" />
+	<country name="Namibië" file="_115" />
+	<country name="Nauru" file="_116" />
+	<country name="Nederland" file="_117" />
+	<country name="Nepal" file="_118" />
+	<country name="Nicaragua" file="_119" />
+	<country name="Nieuw-Zeeland" file="_120" />
+	<country name="Niger" file="_121" />
+	<country name="Nigeria" file="_122" />
+	<country name="Noord-Korea" file="_123" />
+	<country name="Noord-Macedonië" file="_124" />
+	<country name="Noorwegen" file="_125" />
+	<country name="Oeganda" file="_126" />
+	<country name="Oekraïne" file="_127" />
+	<country name="Oezbekistan" file="_128" />
+	<country name="Oman" file="_129" />
+	<country name="Oost-Timor" file="_130" />
+	<country name="Oostenrijk" file="_131" />
+	<country name="Pakistan" file="_132" />
+	<country name="Palau" file="_133" />
+	<country name="Palestina" file="_134" />
+	<country name="Panama" file="_135" />
+	<country name="Papoea-Nieuw-Guinea" file="_136" />
+	<country name="Paraguay" file="_137" />
+	<country name="Peru" file="_138" />
+	<country name="Polen" file="_139" />
+	<country name="Portugal" file="_140" />
+	<country name="Qatar" file="_141" />
+	<country name="Roemenië" file="_142" />
+	<country name="Rusland" file="_143" />
+	<country name="Rwanda" file="_144" />
+	<country name="Saint Kitts en Nevis" file="_145" />
+	<country name="Saint Lucia" file="_146" />
+	<country name="Saint Vincent en de Grenadines" file="_147" />
+	<country name="Salomonseilanden" file="_148" />
+	<country name="Samoa" file="_149" />
+	<country name="San Marino" file="_150" />
+	<country name="Sao Tomé en Principe" file="_151" />
+	<country name="Saoedi-Arabië" file="_152" />
+	<country name="Senegal" file="_153" />
+	<country name="Servië" file="_154" />
+	<country name="Seychellen" file="_155" />
+	<country name="Sierra Leone" file="_156" />
+	<country name="Singapore" file="_157" />
+	<country name="Slovenië" file="_158" />
+	<country name="Slowakije" file="_159" />
+	<country name="Soedan" file="_160" />
+	<country name="Somalië" file="_161" />
+	<country name="Spanje" file="_162" />
+	<country name="Sri Lanka" file="_163" />
+	<country name="Suriname" file="_164" />
+	<country name="Swaziland" file="_165" />
+	<country name="Syrië" file="_166" />
+	<country name="Tadzjikistan" file="_167" />
+	<country name="Tanzania" file="_168" />
+	<country name="Thailand" file="_169" />
+	<country name="Togo" file="_170" />
+	<country name="Tonga" file="_171" />
+	<country name="Trinidad en Tobago" file="_172" />
+	<country name="Tsjaad" file="_173" />
+	<country name="Tsjechië" file="_174" />
+	<country name="Tunesië" file="_175" />
+	<country name="Turkije" file="_176" />
+	<country name="Turkmenistan" file="_177" />
+	<country name="Tuvalu" file="_178" />
+	<country name="Uruguay" file="_179" />
+	<country name="Vanuatu" file="_180" />
+	<country name="Vaticaanstad" file="_181" />
+	<country name="Venezuela" file="_182" />
+	<country name="Verenigd Koninkrijk" file="_183" />
+	<country name="Verenigde Arabische Emiraten" file="_184" />
+	<country name="Verenigde Staten" file="_185" />
+	<country name="Vietnam" file="_186" />
+	<country name="Wit-Rusland" file="_187" />
+	<country name="Zambia" file="_188" />
+	<country name="Zimbabwe" file="_189" />
+	<country name="Zuid-Afrika" file="_190" />
+	<country name="Zuid-Korea" file="_191" />
+	<country name="Zuid-Soedan" file="_192" />
+	<country name="Zweden" file="_193" />
+	<country name="Zwitserland" file="_194" />
+</root>

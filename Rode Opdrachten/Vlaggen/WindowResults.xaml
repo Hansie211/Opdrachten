@@ -7,11 +7,11 @@
         mc:Ignorable="d" Height="536" Width="1133" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid Background="#FF2C3E50">
         <Grid HorizontalAlignment="Left" Height="385" Margin="70,62,0,0" VerticalAlignment="Top" Width="490" Background="#FF34495E">
-            <Image x:Name="imgFlagCorrect" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" Source="0.png"/>
+            <Image x:Name="imgFlagCorrect" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470"/>
             <Label x:Name="lblAnswerCorrect" Content="Afghanistan" HorizontalAlignment="Left" Margin="0,335,0,0" VerticalAlignment="Top" Height="41" Width="490" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="385" Margin="565,62,0,0" VerticalAlignment="Top" Width="490" Background="#FF34495E">
-            <Image x:Name="imgFlagUser" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" Source="0.png"/>
+            <Image x:Name="imgFlagUser" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" />
             <Label x:Name="lblAnswerUser" Content="Afghanistan" HorizontalAlignment="Left" Margin="0,335,0,0" VerticalAlignment="Top" Height="41" Width="490" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center"/>
             <Button x:Name="btnNext" Content="&gt;" HorizontalAlignment="Left" Height="395" Margin="498,-10,-55,0" VerticalAlignment="Top" Width="47" Background="#FF2980B9" BorderBrush="{x:Null}" Foreground="White" FontSize="48" FontWeight="Bold" Click="BtnNext_Click"/>
             <Button x:Name="btnPrev" Content="&lt;" HorizontalAlignment="Left" Height="395" Margin="-552,-10,0,0" VerticalAlignment="Top" Width="47" Background="#FF2980B9" BorderBrush="{x:Null}" Foreground="White" FontSize="48" FontWeight="Bold" Click="BtnPrev_Click"/>

@@ -12,7 +12,7 @@
                 <Button x:Name="btnPrevFlag" Content="&lt;" HorizontalAlignment="Left" Height="385" Margin="15,10,0,-133" VerticalAlignment="Top" Width="55" BorderBrush="{x:Null}" Background="#FF3498DB" Foreground="White" FontWeight="Bold" FontSize="48" Tag="-1" Click="BtnPrevFlag_Click"/>
                 <Button x:Name="btnNextFlag" Content="&gt;" HorizontalAlignment="Left" Height="385" Margin="595,10,-176,-133" VerticalAlignment="Top" Width="55" BorderBrush="{x:Null}" Background="#FF3498DB" Foreground="White" FontWeight="Bold" FontSize="48" Tag="1" Click="BtnNextFlag_Click"/>
                 <Grid HorizontalAlignment="Left" Height="385" Margin="90,10,-106,-133" VerticalAlignment="Top" Width="490" Background="#FF34495E">
-                    <Image x:Name="imgFlag" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" Source="0.png"/>
+                    <Image x:Name="imgFlag" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" />
                     <ComboBox x:Name="boxName" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="490" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF34495E" Height="55" FontSize="36" FontWeight="Bold" IsEditable="True" SelectionChanged="BoxName_SelectionChanged"/>
                 </Grid>
                 <Button x:Name="btnStartQuiz" Content="Quiz &gt;&gt;" HorizontalAlignment="Left" Height="50" Margin="15,414,0,0" VerticalAlignment="Top" Width="635" BorderBrush="{x:Null}" Foreground="White" Background="#FF27AE60" FontSize="30" FontWeight="Bold" Click="BtnStartQuiz_Click"/>
@@ -36,7 +36,7 @@
                     <TabItem Header="TabItem" Width="0" Height="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
                         <Grid Margin="0,0,0,16">
                             <Grid HorizontalAlignment="Left" Height="431" Margin="10,10,0,0" VerticalAlignment="Top" Width="490" Background="#FF34495E">
-                                <Image x:Name="imgFlagOpen" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" Source="0.png"/>
+                                <Image x:Name="imgFlagOpen" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" />
                                 <ComboBox x:Name="boxNameQuestion" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="490" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF34495E" Height="55" FontSize="36" FontWeight="Bold" IsEditable="True"/>
                                 <Label Content="Welk land is dit?" HorizontalAlignment="Left" Margin="0,335,0,0" VerticalAlignment="Top" Height="41" Width="490" FontSize="24" FontWeight="Bold" Foreground="White"/>
                             </Grid>
@@ -50,7 +50,7 @@
                                 <ColumnDefinition Width="545*"/>
                             </Grid.ColumnDefinitions>
                             <Grid HorizontalAlignment="Left" Height="431" Margin="10,10,0,0" VerticalAlignment="Top" Width="490" Background="#FF34495E" Grid.ColumnSpan="2">
-                                <Image x:Name="imgFlagClosed" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" Source="0.png"/>
+                                <Image x:Name="imgFlagClosed" HorizontalAlignment="Center" Height="313" Margin="10,10,10,0" VerticalAlignment="Top" Width="470" />
                                 <Label Content="Welk land is dit?" HorizontalAlignment="Left" Margin="0,335,0,0" VerticalAlignment="Top" Height="41" Width="490" FontSize="24" FontWeight="Bold" Foreground="White"/>
                                 <RadioButton x:Name="rbClosedA" Content="RadioButton" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" Background="White" FontSize="15" Foreground="White" FontWeight="Bold" Width="150"/>
                                 <RadioButton x:Name="rbClosedB" Content="RadioButton" HorizontalAlignment="Left" Margin="165,398,0,0" VerticalAlignment="Top" Background="White" FontSize="15" Foreground="White" FontWeight="Bold" Width="150"/>
