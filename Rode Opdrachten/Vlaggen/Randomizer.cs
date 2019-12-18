@@ -31,19 +31,19 @@ namespace Vlaggen {
                 result *= -1;
             }
 
-            return (int)( result % max ) ;
+            return (int)( result % max );
         }
 
         public static int[] randomize( int[] list ) {
 
-            for( int i = 0; i < list.Length; i++ ) {
+            for ( int i = 0; i < list.Length; i++ ) {
 
                 int j = randomNumber(list.Length);
 
                 // swap
                 int tmp = list[i];
-                list[i] = list[j];
-                list[j] = tmp;
+                list[ i ] = list[ j ];
+                list[ j ] = tmp;
             }
 
             return list;
@@ -54,11 +54,11 @@ namespace Vlaggen {
             // Create a pool of indexes
             int[] pool = new int[ list.Length ];
             for ( int i = 0; i < pool.Length; i++ ) {
-                pool[i] = i;
+                pool[ i ] = i;
             }
 
             // Randomize the pool
-            return randomize(pool);
+            return randomize( pool );
         }
     }
 }
