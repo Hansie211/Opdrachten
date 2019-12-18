@@ -89,7 +89,7 @@ namespace GroeneOpdrachten {
             return System.Reflection.Assembly.GetExecutingAssembly().GetTypes().Where( tmp => tmp.IsSubclassOf( me ) ).ToArray();
         }
 
-        static public string Opdracht( Type subClass ) { 
+        static public string getName( Type subClass ) { 
         
             return (string)subClass.GetMethod( "Opdracht" ).Invoke( null, null );
         }

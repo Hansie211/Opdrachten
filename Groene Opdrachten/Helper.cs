@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace GroeneOpdrachten {
@@ -11,6 +12,7 @@ namespace GroeneOpdrachten {
         public const int MINUTES_PER_HOUR   = 60;
         public const int MINUTES_PER_DAY    = HOURS_PER_DAY * MINUTES_PER_HOUR;
 
+        public static readonly Regex regexNum = new Regex("[^0-9.-]+");
 
         static public int max( int a, int b ) {
             return ( a > b ) ? a : b;
@@ -40,27 +42,26 @@ namespace GroeneOpdrachten {
 
         static public int clamp( int i, int _min, int _max ) {
 
-            // Reversed
             return min( max(i, _min), _max );
         }
 
-        static public void split( out int[] l1, out int[] l2, int turn, int[] input ) {
+        static public void split( int[] input, int splitValue, out int[] resultLthen, out int[] resultGEthen ) {
 
-            l1 = new int[0];
-            l2 = new int[0];
+            resultLthen = new int[0];
+            resultGEthen = new int[0];
 
             for( int i = 0; i < input.Length; i++ ) {
 
-                if ( input[i] < turn ) {
-                    int k = l1.Length;
+                if ( input[i] < splitValue ) {
+                    int k = resultLthen.Length;
 
-                    Array.Resize( ref l1, k + 1);
-                    l1[k] = input[i];
+                    Array.Resize( ref resultLthen, k + 1);
+                    resultLthen[k] = input[i];
                 } else {
-                    int k = l2.Length;
+                    int k = resultGEthen.Length;
 
-                    Array.Resize( ref l2, k + 1 );
-                    l2[k] = input[i];
+                    Array.Resize( ref resultGEthen, k + 1 );
+                    resultGEthen[k] = input[i];
                 }
             }
         }
@@ -75,21 +76,16 @@ namespace GroeneOpdrachten {
                 return 0;
             }
 
-
-            int result = current.Year - birthdate.Year;
-
             // Born in november but 'current' is february? Subtract a year!
-            DateTime tmp;
+            int result = (current.Year - birthdate.Year) - 1;
 
-            // February 29...
-            try { 
-                tmp = new DateTime( current.Year, birthdate.Month, birthdate.Day );
-            } catch {
-                tmp = new DateTime( current.Year, birthdate.Month, birthdate.Day - 1);
-            }
+            // Add the year back if birthday passed this year
+            if ( current.Month > birthdate.Month ) {
 
-            if ( tmp > current ) {
-                result--;
+                result++;
+            } else if ( ( current.Month == birthdate.Month ) && ( current.Day >= birthdate.Day ) ) {
+
+                result++;
             }
 
             return result;
@@ -113,5 +109,16 @@ namespace GroeneOpdrachten {
             
             return true;
         }
+
+        static public bool isNumeric( string text ) {
+
+            return !regexNum.IsMatch( text );
+        }
+
+        static public double parseDouble( string text ) {
+
+            return double.Parse( text, System.Globalization.CultureInfo.InvariantCulture );
+        }
+
     }
 }

@@ -16,6 +16,10 @@ namespace GroeneOpdrachten {
     /// <summary>
     /// Interaction logic for window_opdr_7.xaml
     /// </summary>
+    /// 
+
+    using static Helper;
+
     public partial class WinOpdr7 : OpdrWindow {
 
         public static new string Opdracht() {

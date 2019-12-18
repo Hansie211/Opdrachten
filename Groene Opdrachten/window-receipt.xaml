@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:GroeneOpdrachten"
         mc:Ignorable="d" Height="456" Width="393" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <TextBlock x:Name="memo" HorizontalAlignment="Left" Height="345" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" FontFamily="Source Code Pro" Text="01234567890123456789012345678901234567890123456789"/>
-        <Button x:Name="button" Content="OK" HorizontalAlignment="Left" Margin="10,369,0,0" VerticalAlignment="Top" Width="360" Height="40" BorderBrush="{x:Null}" Background="#FFDE1A1A" Foreground="White" FontWeight="Bold" FontSize="22" Click="Button_Click"/>
+        <TextBlock x:Name="memo" HorizontalAlignment="Left" Height="345" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" FontFamily="Courier New"/>
+        <Button x:Name="button" Content="SLUITEN" HorizontalAlignment="Left" Margin="10,369,0,0" VerticalAlignment="Top" Width="360" Height="40" BorderBrush="{x:Null}" Background="#FFDE1A1A" Foreground="White" FontWeight="Bold" FontSize="22" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -127,7 +127,7 @@ namespace GroeneOpdrachten {
                 ages[i] = age( children[i].date, peilDatum );
             }
 
-            split( out young, out old, 10, ages );
+            split( ages, 10, out young, out old );
 
             w.addToReceipt( "Basisbedrag", 1, 50 );
             w.addToReceipt( "Kind jonger dan 10", min( young.Length, 3 ), 25 );

@@ -25,7 +25,27 @@ namespace GroeneOpdrachten {
     public partial class MainWindow : Window {
 
         // Get a list of all OpdrWindows
-        private readonly Type[] opdrachten = OpdrWindow.getSubWindows();
+        private readonly List<Type> opdrachten = new List<Type>( OpdrWindow.getSubWindows() );
+
+        private static int sortOpdrachten( Type A, Type B ) {
+
+            // Make sure Opdr10 is after Opdr1
+
+            string titleA = A.Name;
+            string titleB = B.Name;
+
+            if ( titleB.Length == titleA.Length ) {
+
+                return titleA.CompareTo( titleB );
+            }
+
+            if ( titleB.Length < titleA.Length ) {
+
+                return 1;
+            }
+
+            return -1;
+        }
 
         public MainWindow() {
 
@@ -33,10 +53,12 @@ namespace GroeneOpdrachten {
 
             App.Current.Resources["DateTimeNow"] = DateTime.Now;
 
-            // Init the selectionbox
-            for ( int i = 0; i < opdrachten.Length; i++ ) {
+            opdrachten.Sort( sortOpdrachten );
 
-                string name = OpdrWindow.Opdracht( opdrachten[i] );
+            // Init the selectionbox
+            for ( int i = 0; i < opdrachten.Count; i++ ) {
+
+                string name = OpdrWindow.getName( opdrachten[i] );
                 boxOpdracht.Items.Add( name );
             }
 
