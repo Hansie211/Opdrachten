@@ -8,7 +8,7 @@
         Title="" Height="401" Width="458" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" PreviewKeyDown="Window_PreviewKeyDown">
     <Grid Margin="0,0,0,0">
         <Grid Margin="1,0,1,-3" Height="375" Width="450" Grid.ColumnSpan="2">
-            <TextBox x:Name="edtMain" HorizontalAlignment="Left" Height="44" Margin="10,45,0,0" VerticalAlignment="Top" Width="310" FontSize="30" Text="0" PreviewKeyDown="TextBox_PreviewKeyDown" BorderBrush="{x:Null}" Background="{x:Null}"/>
+            <TextBox x:Name="edtMain" HorizontalAlignment="Left" Height="44" Margin="10,45,0,0" VerticalAlignment="Top" Width="310" FontSize="30" Text="0" BorderBrush="{x:Null}" Background="{x:Null}"/>
             <Label x:Name="labelStack" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,15,0,0" Height="25" Width="310" Padding="0" FontSize="16" HorizontalContentAlignment="Center"/>
             <Button Content="1" Margin="10,115,0,0" FontSize="20" HorizontalAlignment="Left" Width="100" Height="45" VerticalAlignment="Top" Tag="1" Click="BtnKeypad_Click" Background="#FF1ABC9C" BorderBrush="{x:Null}" FontWeight="Bold" Foreground="White"/>
             <Button Content="2" Margin="115,115,0,0" FontSize="20" HorizontalAlignment="Left" Width="100" Height="45" VerticalAlignment="Top" Tag="2" Click="BtnKeypad_Click" Background="#FF1ABC9C" BorderBrush="{x:Null}" FontWeight="Bold" Foreground="White"/>

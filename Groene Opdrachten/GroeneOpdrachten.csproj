@@ -60,6 +60,9 @@
     <Compile Include="window-opdr-1.xaml.cs">
       <DependentUpon>window-opdr-1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="window-opdr-10.xaml.cs">
+      <DependentUpon>window-opdr-10.xaml</DependentUpon>
+    </Compile>
     <Compile Include="window-opdr-2.xaml.cs">
       <DependentUpon>window-opdr-2.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,12 @@
     <Compile Include="window-opdr-7.xaml.cs">
       <DependentUpon>window-opdr-7.xaml</DependentUpon>
     </Compile>
+    <Compile Include="window-opdr-8.xaml.cs">
+      <DependentUpon>window-opdr-8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="window-opdr-9.xaml.cs">
+      <DependentUpon>window-opdr-9.xaml</DependentUpon>
+    </Compile>
     <Compile Include="window-receipt.xaml.cs">
       <DependentUpon>window-receipt.xaml</DependentUpon>
     </Compile>
@@ -94,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="window-opdr-1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="window-opdr-10.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -118,6 +131,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="window-opdr-7.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="window-opdr-8.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="window-opdr-9.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
