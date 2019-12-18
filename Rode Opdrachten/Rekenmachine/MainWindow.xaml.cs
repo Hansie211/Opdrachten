@@ -428,5 +428,6 @@ namespace Opdracht1 {
             newCalculation = false;
 
         }
+
     }
 }
