@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Opdracht2 {
+namespace Vlaggen {
     using System;
     
     

@@ -8,7 +8,7 @@ using System.Xml;
 
 using Bitmap = System.Drawing.Bitmap;
 
-namespace Opdracht2 {
+namespace Vlaggen {
     struct Country {
 
         public string name;

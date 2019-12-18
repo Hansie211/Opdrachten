@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Opdracht2 {
+namespace Vlaggen {
     public class Quiz {
 
         public const int MAX_QUIZ_QUESTION = 10;
@@ -42,7 +42,7 @@ namespace Opdracht2 {
 
             currentQuestion++;
 
-            if ( quizFinished () ) {
+            if ( quizFinished() ) {
                 return -1;
             }
 
@@ -54,18 +54,18 @@ namespace Opdracht2 {
             correctAnswerCount  = 0;
             currentQuestion     = 0;
 
-            questionAnswers = new int[MAX_QUIZ_QUESTION];
-            userAnswers     = new int[MAX_QUIZ_QUESTION];
+            questionAnswers = new int[ MAX_QUIZ_QUESTION ];
+            userAnswers     = new int[ MAX_QUIZ_QUESTION ];
 
             // Get our 10 questions
             int[] randomCountries = CountryManager.randomCountries();
 
             for ( int i = 0; i < MAX_QUIZ_QUESTION; i++ ) {
-                questionAnswers[i] = randomCountries[i];
+                questionAnswers[ i ] = randomCountries[ i ];
             }
 
             // I only want 3 open questions
-            questionTypes = new int[MAX_QUIZ_QUESTION] { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 };
+            questionTypes = new int[ MAX_QUIZ_QUESTION ] { 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 };
             questionTypes = Randomizer.randomize( questionTypes );
         }
 

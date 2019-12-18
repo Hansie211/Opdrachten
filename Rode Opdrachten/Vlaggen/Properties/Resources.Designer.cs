@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Opdracht2.Properties {
+namespace Vlaggen.Properties {
 
 
     /// <summary>

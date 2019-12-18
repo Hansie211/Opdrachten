@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Opdracht2 {
+namespace Vlaggen {
     static class Randomizer {
 
         public static RNGCryptoServiceProvider provider;

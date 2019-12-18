@@ -117,9 +117,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="0.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\database.xml" />
   </ItemGroup>
   <ItemGroup>

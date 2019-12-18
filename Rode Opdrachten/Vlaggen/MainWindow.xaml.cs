@@ -18,7 +18,7 @@ using Brush = System.Windows.Media.Brush;
 using Brushes = System.Windows.Media.Brushes;
 
 
-namespace Opdracht2 {
+namespace Vlaggen {
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -35,24 +35,24 @@ namespace Opdracht2 {
 
         public MarkHandler( int sz ) {
 
-            marks = new Grid[sz];
+            marks = new Grid[ sz ];
         }
 
         public void reset() {
 
-            for( int i = 0; i < marks.Length; i++ ) {
-                marks[i].Background = colorEmpty;
+            for ( int i = 0; i < marks.Length; i++ ) {
+                marks[ i ].Background = colorEmpty;
             }
         }
 
         public void add( int idx, Grid mark ) {
 
-            marks[idx] = mark;
+            marks[ idx ] = mark;
         }
 
         public void set( int idx, Boolean correct ) {
 
-            marks[idx].Background = (correct) ? colorCorrect : colorWrong;
+            marks[ idx ].Background = ( correct ) ? colorCorrect : colorWrong;
         }
 
     }
@@ -70,9 +70,9 @@ namespace Opdracht2 {
 
             CountryManager.init();
 
-            for( int i = 0; i < CountryManager.countries.Length; i++ ) {
-                boxName.Items.Add( CountryManager.countries[i].name );
-                boxNameQuestion.Items.Add( CountryManager.countries[i].name );
+            for ( int i = 0; i < CountryManager.countries.Length; i++ ) {
+                boxName.Items.Add( CountryManager.countries[ i ].name );
+                boxNameQuestion.Items.Add( CountryManager.countries[ i ].name );
             }
 
             boxName.SelectedIndex = 0;
@@ -124,7 +124,7 @@ namespace Opdracht2 {
 
             currentIndex = ( (ComboBox)sender ).SelectedIndex;
             // Load the matching flag
-            imgFlag.Source = CountryManager.countries[currentIndex].flag;
+            imgFlag.Source = CountryManager.countries[ currentIndex ].flag;
         }
 
 
@@ -142,9 +142,9 @@ namespace Opdracht2 {
 
             // Generate some random answers
             int[] pool = CountryManager.randomCountries();
-            for( int i = 0; i < 3; i++ ) {
-                if (pool[i] == quiz.getCurrentAnswer()) { // small chance, but a chance
-                    pool[i] = pool[i+10];
+            for ( int i = 0; i < 3; i++ ) {
+                if ( pool[ i ] == quiz.getCurrentAnswer() ) { // small chance, but a chance
+                    pool[ i ] = pool[ i+10 ];
                     break; // it cant happen twice
                 }
             }
@@ -154,13 +154,13 @@ namespace Opdracht2 {
             pool[ localAnswer ] = quiz.getCurrentAnswer();
 
             // Display the possible answers
-            rbClosedA.Tag = pool[0];
-            rbClosedB.Tag = pool[1];
-            rbClosedC.Tag = pool[2];
+            rbClosedA.Tag = pool[ 0 ];
+            rbClosedB.Tag = pool[ 1 ];
+            rbClosedC.Tag = pool[ 2 ];
 
-            rbClosedA.Content = CountryManager.countries[pool[0]].name;
-            rbClosedB.Content = CountryManager.countries[pool[1]].name;
-            rbClosedC.Content = CountryManager.countries[pool[2]].name;
+            rbClosedA.Content = CountryManager.countries[ pool[ 0 ] ].name;
+            rbClosedB.Content = CountryManager.countries[ pool[ 1 ] ].name;
+            rbClosedC.Content = CountryManager.countries[ pool[ 2 ] ].name;
 
             rbClosedA.ToolTip = rbClosedA.Content;
             rbClosedB.ToolTip = rbClosedB.Content;
@@ -174,13 +174,15 @@ namespace Opdracht2 {
 
         private void askQuestion() {
 
-            switch( quiz.questionTypes[ quiz.currentQuestion ] ) {
+            switch ( quiz.questionTypes[ quiz.currentQuestion ] ) {
                 case 0:
-                    askOpenQuestion(); break;
+                    askOpenQuestion();
+                    break;
                 case 1:
-                    askClosedQuestion(); break;
+                    askClosedQuestion();
+                    break;
             }
-            
+
         }
 
         private void answerQuestion( int answer ) {
@@ -191,7 +193,7 @@ namespace Opdracht2 {
             markHandler.set( quiz.currentQuestion, correct );
 
             if ( quiz.nextQuestion() < 0 ) {
-                
+
                 MessageBox.Show( String.Format( "Einde van de quiz! Je had {0} van de {1} vragen goed!", quiz.correctAnswerCount, Quiz.MAX_QUIZ_QUESTION ) );
                 tabControl.SelectedIndex = 0;
 
@@ -213,7 +215,7 @@ namespace Opdracht2 {
             markHandler.reset();
 
             // Go to tab 'Quiz'
-            tabControl.SelectedIndex = 1; 
+            tabControl.SelectedIndex = 1;
             askQuestion();
         }
 
@@ -230,7 +232,7 @@ namespace Opdracht2 {
                 answerQuestion( (int)rbClosedA.Tag );
                 return;
             }
-            
+
             if ( (bool)rbClosedB.IsChecked ) {
 
                 rbClosedB.IsChecked = false;

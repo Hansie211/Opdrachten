@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Opdracht2.Properties {
+namespace Vlaggen.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

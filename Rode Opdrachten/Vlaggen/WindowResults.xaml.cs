@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Opdracht2 {
+namespace Vlaggen {
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
@@ -26,13 +26,13 @@ namespace Opdracht2 {
 
         private void displayQuestion() {
 
-            Title = String.Format("{0} / {1}", currentQuestion+1, Quiz.MAX_QUIZ_QUESTION);
+            Title = String.Format( "{0} / {1}", currentQuestion+1, Quiz.MAX_QUIZ_QUESTION );
 
-            imgFlagCorrect.Source       = CountryManager.countries[quiz.questionAnswers[currentQuestion]].flag;
-            lblAnswerCorrect.Content    = CountryManager.countries[quiz.questionAnswers[currentQuestion]].name;
+            imgFlagCorrect.Source       = CountryManager.countries[ quiz.questionAnswers[ currentQuestion ] ].flag;
+            lblAnswerCorrect.Content    = CountryManager.countries[ quiz.questionAnswers[ currentQuestion ] ].name;
 
-            imgFlagUser.Source    = CountryManager.countries[quiz.userAnswers[currentQuestion]].flag;
-            lblAnswerUser.Content = CountryManager.countries[quiz.userAnswers[currentQuestion]].name;
+            imgFlagUser.Source    = CountryManager.countries[ quiz.userAnswers[ currentQuestion ] ].flag;
+            lblAnswerUser.Content = CountryManager.countries[ quiz.userAnswers[ currentQuestion ] ].name;
 
             Boolean correct = ( quiz.userAnswers[currentQuestion] == quiz.questionAnswers[currentQuestion] );
 
@@ -55,8 +55,8 @@ namespace Opdracht2 {
             currentQuestion++;
 
             if ( currentQuestion >= Quiz.MAX_QUIZ_QUESTION ) {
-                
-                MessageBox.Show("Dit waren alle antwoorden.");
+
+                MessageBox.Show( "Dit waren alle antwoorden." );
                 return;
             }
 
