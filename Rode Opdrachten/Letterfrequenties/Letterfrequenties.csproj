@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CABDF0D-7C66-4D18-A0F1-05CF6DC8D63B}</ProjectGuid>
+    <ProjectGuid>{82F7927B-A8E9-4F67-BE5D-C8C88BE17E96}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Opdracht6</RootNamespace>
-    <AssemblyName>Opdracht6</AssemblyName>
+    <RootNamespace>Letterfrequenties</RootNamespace>
+    <AssemblyName>Letterfrequenties</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

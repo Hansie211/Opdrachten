@@ -1,9 +1,9 @@
-﻿<Application x:Class="Opdracht6.App"
+﻿<Application x:Class="LettertypeChaos.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Opdracht6"
+             xmlns:local="clr-namespace:LettertypeChaos"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>

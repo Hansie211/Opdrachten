@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Opdracht8.Properties {
+namespace BoterKaasEieren.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

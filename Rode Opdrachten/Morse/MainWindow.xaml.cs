@@ -16,14 +16,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace Opdracht9 {
+namespace Morse {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
 
         private int freq, ms;
-        
+
         private Boolean threadRunning = false; // used to stop the thread
 
         private const int dotLength     = 1;
@@ -47,7 +47,7 @@ namespace Opdracht9 {
 
         private void SetCurrentChar( char c ) {
 
-            if ( c == ' ') {
+            if ( c == ' ' ) {
                 c = '_';
             }
 
@@ -80,7 +80,7 @@ namespace Opdracht9 {
                     break;
                 }
 
-                beep( text[i] );
+                beep( text[ i ] );
 
                 if ( i < text.Length - 1 ) {
 
@@ -124,7 +124,7 @@ namespace Opdracht9 {
             }
 
             freq = Convert.ToInt32( sbFreq.Value );
-            lblHertz.Content = String.Format("{0} Hz", freq);
+            lblHertz.Content = String.Format( "{0} Hz", freq );
 
         }
 
@@ -190,7 +190,7 @@ namespace Opdracht9 {
         public char findChar( Boolean[] code ) {
 
             // For all keys
-            for( int i = 0; i < morseCodes.Keys.Count - 1; i++ ) {
+            for ( int i = 0; i < morseCodes.Keys.Count - 1; i++ ) {
 
                 Boolean correct = true;
 
@@ -206,7 +206,7 @@ namespace Opdracht9 {
                 // Compare the codes
                 for ( int j = 0; j < code.Length; j++ ) {
 
-                    if ( code[j] != subcode[j] ) {
+                    if ( code[ j ] != subcode[ j ] ) {
 
                         correct = false;
                         break;
@@ -236,7 +236,7 @@ namespace Opdracht9 {
             const int space         = 7;
 
             line.X1 = 3 + i * ( longLineSize + space );
-            line.X2 = line.X1 + ((isLong) ? longLineSize : shortLineSize );
+            line.X2 = line.X1 + ( ( isLong ) ? longLineSize : shortLineSize );
             line.Y1 = 7;
             line.Y2 = line.Y1;
 
@@ -256,7 +256,7 @@ namespace Opdracht9 {
 
         private void beep( char c ) {
 
-            lblCurrent.Dispatcher.Invoke( new SetCurrentCharCallback(SetCurrentChar), new object[] { c } );
+            lblCurrent.Dispatcher.Invoke( new SetCurrentCharCallback( SetCurrentChar ), new object[] { c } );
 
             canvas.Dispatcher.Invoke( new ClearCanvasCallback( ClearCanvas ) );
             //canvas.Children.Clear();
@@ -275,10 +275,10 @@ namespace Opdracht9 {
             Boolean[] code = morseCodes[c];
             for ( int i = 0; i < code.Length; i++ ) {
 
-                canvas.Dispatcher.Invoke( new UpdateCanvasCallback(UpdateCanvas), new object[] { i, code[i] } );
+                canvas.Dispatcher.Invoke( new UpdateCanvasCallback( UpdateCanvas ), new object[] { i, code[ i ] } );
                 //visualBeep( i , code[i]);
 
-                beep( code[i] );
+                beep( code[ i ] );
 
                 if ( i < code.Length - 1 ) {
                     // Sleep between dots
@@ -300,12 +300,12 @@ namespace Opdracht9 {
 
         private void BtnTestLong_Click( object sender, RoutedEventArgs e ) {
 
-            beep(true);
+            beep( true );
         }
 
         private void BtnTestShort_Click( object sender, RoutedEventArgs e ) {
 
-            beep(false);
+            beep( false );
         }
 
         private void BtnGO_Click( object sender, RoutedEventArgs e ) {
@@ -326,9 +326,9 @@ namespace Opdracht9 {
 
             string result = "";
 
-            for( int i = 0; i < code.Length; i++ ) {
+            for ( int i = 0; i < code.Length; i++ ) {
 
-                result += (code[i]) ? '-' : '.';
+                result += ( code[ i ] ) ? '-' : '.';
             }
 
             return result;
@@ -349,24 +349,24 @@ namespace Opdracht9 {
 
             for ( int i = 0; i < text.Length; i++ ) {
 
-                if ( text[i] == ' ' ) {
+                if ( text[ i ] == ' ' ) {
 
                     output += ' ';
                     continue;
                 }
 
-                if ( !morseCodes.ContainsKey(text[i]) ) {
+                if ( !morseCodes.ContainsKey( text[ i ] ) ) {
                     continue;
                 }
 
-                output += morseToText( morseCodes[text[i]] ) + '|';
+                output += morseToText( morseCodes[ text[ i ] ] ) + '|';
             }
 
-        displayForm:
+            displayForm:
             WindowExport w = new WindowExport();
 
             // Remove letter-seperator at the end of a word
-            output = output.Replace("| ", " ").TrimEnd( '|' );
+            output = output.Replace( "| ", " " ).TrimEnd( '|' );
 
             w.textBlock.Text = output;
 

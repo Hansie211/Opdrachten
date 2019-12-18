@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Opdracht6.Properties {
+namespace LettertypeChaos.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

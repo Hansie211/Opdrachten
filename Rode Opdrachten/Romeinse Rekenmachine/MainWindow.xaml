@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Opdracht5"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Opdracht5.MainWindow"
+        xmlns:local="clr-namespace:RomeinseRekenmachine"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="RomeinseRekenmachine.MainWindow"
         mc:Ignorable="d" Height="607" Width="414" FontFamily="Sitka Text" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
@@ -34,6 +34,8 @@
         <FontWeight x:Key="ButtonFontWeight">Bold</FontWeight>
         <FontFamily x:Key="DefaultFontFamily">Sitka Text</FontFamily>
 
+        <local:UI x:Key="UI"/>
+
     </Window.Resources>
     <Grid HorizontalAlignment="Left" Height="580" Margin="0" VerticalAlignment="Top" Width="410">
         <Grid Background="{DynamicResource BackgroundColor}">
@@ -55,7 +57,7 @@
             <Button x:Name="btnEqual" Content="=" Height="55" Margin="0,480,25,0" VerticalAlignment="Top" Background="{DynamicResource ForegroundColor}" Foreground="{DynamicResource TextColor}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontWeight="Bold" FontFamily="{DynamicResource DefaultFontFamily}" FontSize="{DynamicResource DefaultFontSize}" HorizontalAlignment="Right" Width="115" Click="BtnEqual_Click"/>
             <Button x:Name="btnClear" Content="CE" Height="55" Margin="0,327,175,0" VerticalAlignment="Top" Background="{DynamicResource ForegroundColor}" Foreground="{DynamicResource TextColor}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontWeight="Bold" FontFamily="{DynamicResource DefaultFontFamily}" FontSize="{DynamicResource DefaultFontSize}" HorizontalAlignment="Right" Width="55" Click="BtnClear_Click" />
             <Button x:Name="btnBack" Height="55" Margin="0,387,175,0" VerticalAlignment="Top" Background="{DynamicResource ForegroundColor}" Foreground="{DynamicResource TextColor}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontWeight="Bold" FontFamily="{DynamicResource DefaultFontFamily}" FontSize="{DynamicResource DefaultFontSize}" HorizontalAlignment="Right" Width="55" Click="BtnBack_Click" ClickMode="Press" >
-                <Image Height="23" Width="45" IsEnabled="False" Source="D:\Data\Development\Visual Studio\Source\Opdracht5\backspace.png"/>
+                <Image Height="23" Width="45" IsEnabled="False" Source="{Binding Source={StaticResource UI}, Path=Backspace }"/>
             </Button>
         </Grid>
     </Grid>

@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Opdracht9 {
+namespace Morse {
     /// <summary>
     /// Interaction logic for WindowExport.xaml
     /// </summary>
@@ -27,12 +27,12 @@ namespace Opdracht9 {
             Boolean[] code = new Boolean[ s.Length ];
 
             // String to code
-            for( int i = 0; i < s.Length; i++ ) {
+            for ( int i = 0; i < s.Length; i++ ) {
 
-                code[i] = ( s[i] == '-' );
+                code[ i ] = ( s[ i ] == '-' );
             }
 
-            return ((MainWindow)Application.Current.MainWindow).findChar( code );
+            return ( (MainWindow)Application.Current.MainWindow ).findChar( code );
         }
 
         private void BtnImport_Click( object sender, RoutedEventArgs e ) {
@@ -40,16 +40,16 @@ namespace Opdracht9 {
             // Filter illegal characters
             string text = Regex.Replace(textBlock.Text, @"[^\.\- |]", "").Trim();
 
-            
+
             string result = "";
 
 
             // Split the line into words
             string[] words = text.Split(' ');
 
-            for( int i = 0; i < words.Length; i++ ) {
+            for ( int i = 0; i < words.Length; i++ ) {
 
-                if ( words[i].Length == 0 ) {
+                if ( words[ i ].Length == 0 ) {
 
                     continue;
                 }
@@ -58,9 +58,9 @@ namespace Opdracht9 {
                 string[] letters = words[i].Split('|');
 
                 // Find a matching char for each letter
-                for( int j = 0; j < letters.Length; j++ ) {
+                for ( int j = 0; j < letters.Length; j++ ) {
 
-                    if ( letters[j].Length == 0 ) {
+                    if ( letters[ j ].Length == 0 ) {
 
                         continue;
                     }

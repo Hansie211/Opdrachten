@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Opdracht3 {
+namespace Versleutelen {
 
     public static class CRC32 {
 
@@ -18,7 +18,7 @@ namespace Opdracht3 {
             for ( int i = 0; i < bytes.Length; i++ ) {
 
                 byte index = (byte)( ((result) & 0xFF) ^ bytes[i]) ;
-                result = (uint)( ( result >> 8 ) ^ crctable[index] );
+                result = (uint)( ( result >> 8 ) ^ crctable[ index ] );
             }
 
             return ~result;
@@ -26,23 +26,23 @@ namespace Opdracht3 {
 
         public static uint Checksum( string bytes ) {
 
-            return Checksum( Encoding.ASCII.GetBytes(bytes) );
+            return Checksum( Encoding.ASCII.GetBytes( bytes ) );
         }
 
         public static uint Checksum( uint bytes ) {
 
-            return Checksum( new byte[] { 
+            return Checksum( new byte[] {
                 (byte)((bytes >> 24) & 0xFF),
                 (byte)((bytes >> 16) & 0xFF),
                 (byte)((bytes >> 8) & 0xFF),
-                (byte)((bytes >> 0) & 0xFF) 
+                (byte)((bytes >> 0) & 0xFF)
             } );
         }
 
         public static void init() {
             uint polynomial = 0xEDB88320;
 
-            crctable = new uint[256];
+            crctable = new uint[ 256 ];
 
             // Init the table
             for ( uint i = 0; i < crctable.Length; i++ ) {
@@ -50,7 +50,7 @@ namespace Opdracht3 {
                 uint temp = i;
                 for ( int j = 8; j > 0; j-- ) {
 
-                    if ( (temp & 1) == 1 ) {
+                    if ( ( temp & 1 ) == 1 ) {
 
                         temp = (uint)( ( temp >> 1 ) ^ polynomial );
                     } else {
@@ -59,7 +59,7 @@ namespace Opdracht3 {
                     }
                 }
 
-                crctable[i] = temp;
+                crctable[ i ] = temp;
             }
         }
     }
@@ -72,20 +72,20 @@ namespace Opdracht3 {
         static public void init() {
 
             CRC32.init();
-            ciphers = new Cipher[3];
+            ciphers = new Cipher[ 3 ];
 
-            ciphers[0] = new CipherCaesar();
-            ciphers[1] = new CipherXOR();
-            ciphers[2] = new CipherSP();
+            ciphers[ 0 ] = new CipherCaesar();
+            ciphers[ 1 ] = new CipherXOR();
+            ciphers[ 2 ] = new CipherSP();
         }
 
         static public Boolean encrypt( byte bitmode, int cipherIndex, string password, string fileName, out byte[] data ) {
 
-            return ciphers[cipherIndex].encrypt( bitmode, password, fileName, out data );
+            return ciphers[ cipherIndex ].encrypt( bitmode, password, fileName, out data );
         }
         static public Boolean decrypt( byte bitmode, int cipherIndex, string password, string fileName, out byte[] data ) {
 
-            return ciphers[cipherIndex].decrypt( bitmode, password, fileName, out data );
+            return ciphers[ cipherIndex ].decrypt( bitmode, password, fileName, out data );
         }
 
     }
@@ -102,26 +102,26 @@ namespace Opdracht3 {
 
         protected void addChecksum( ref byte[] data, uint crc32 ) {
 
-            Array.Resize( ref data, data.Length + 4);
-            setBlock( ref data, crc32, data.Length - 4, data.Length, 4);
+            Array.Resize( ref data, data.Length + 4 );
+            setBlock( ref data, crc32, data.Length - 4, data.Length, 4 );
         }
 
         protected uint getChecksum( byte[] data ) {
 
-            return getBlock( data, data.Length - 4, data.Length, 4);
+            return getBlock( data, data.Length - 4, data.Length, 4 );
         }
 
         protected uint getBlock( byte[] data, long idx, long max, byte size ) {
 
             uint result = 0;
 
-            for( long i = 0; i < size; i++ ) {
+            for ( long i = 0; i < size; i++ ) {
 
                 if ( i + idx > max - 1 ) { // prevent overflow
                     break;
                 }
 
-                result |= (uint)(data[i + idx] << (byte)(i * 8));
+                result |= (uint)( data[ i + idx ] << (byte)( i * 8 ) );
             }
 
             return result;
@@ -135,7 +135,7 @@ namespace Opdracht3 {
                     return;
                 }
 
-                data[i+idx] = (byte)(( block >> (byte)(i*8) ) & 0xFF );
+                data[ i+idx ] = (byte)( ( block >> (byte)( i*8 ) ) & 0xFF );
             }
 
         }
@@ -167,22 +167,21 @@ namespace Opdracht3 {
 
         }
 
-        private Boolean loadFile( string fileName, out byte[] fileData  ) {
+        private Boolean loadFile( string fileName, out byte[] fileData ) {
 
             FileStream stream;
             try {
                 stream = new FileStream( fileName, FileMode.Open, FileAccess.Read );
-            }
-            catch ( Exception e ) {
+            } catch ( Exception e ) {
 
                 Console.WriteLine( e.Message );
 
-                fileData = new byte[0];
+                fileData = new byte[ 0 ];
                 return false;
             }
 
             // Read all data to memory
-            fileData = new byte[stream.Length];
+            fileData = new byte[ stream.Length ];
             stream.Read( fileData, 0, (int)stream.Length );
 
             // Close the file
@@ -191,7 +190,7 @@ namespace Opdracht3 {
             return true;
         }
 
-        protected void applyPadding(ref byte[] data) {
+        protected void applyPadding( ref byte[] data ) {
 
             byte psize = (byte)(paddingSize - (data.Length % paddingSize));
             if ( psize == 0 ) {
@@ -199,29 +198,29 @@ namespace Opdracht3 {
             }
 
             // Resize to array ( include the padding )
-            Array.Resize( ref data, data.Length + psize);
-            data[ data.Length - 1] = psize; // store the padding size in the last byte
+            Array.Resize( ref data, data.Length + psize );
+            data[ data.Length - 1 ] = psize; // store the padding size in the last byte
         }
 
-        protected void stripPadding(ref byte[] data ) {
+        protected void stripPadding( ref byte[] data ) {
 
             // padding size is in the last byte
             byte psize = data[data.Length-1];
             Array.Resize( ref data, data.Length - psize );
         }
 
-        protected Boolean preparePlainFile( string filename, out byte[] fileData, out byte[] bufferData, out uint crc32 ){
+        protected Boolean preparePlainFile( string filename, out byte[] fileData, out byte[] bufferData, out uint crc32 ) {
 
             crc32 = 0;
 
             if ( !loadFile( filename, out fileData ) ) {
 
-                bufferData = new byte[0];
+                bufferData = new byte[ 0 ];
                 return false;
             }
 
             // Apply the padding to the file
-            if ( usePadding ) { 
+            if ( usePadding ) {
                 applyPadding( ref fileData );
             }
 
@@ -234,11 +233,11 @@ namespace Opdracht3 {
         }
 
         protected Boolean prepareEncryptedFile( string filename, out byte[] fileData, out byte[] bufferData, out uint crc32 ) {
-            
+
             if ( !loadFile( filename, out fileData ) ) {
 
                 crc32       = 0;
-                bufferData  = new byte[0];
+                bufferData  = new byte[ 0 ];
                 return false;
             }
 
@@ -246,7 +245,7 @@ namespace Opdracht3 {
             crc32 = getChecksum( fileData );
 
             // Strip the checksum
-            Array.Resize( ref fileData, fileData.Length - 4);
+            Array.Resize( ref fileData, fileData.Length - 4 );
 
             // Allocate the output buffer
             bufferData = new byte[ fileData.Length ];
@@ -263,7 +262,7 @@ namespace Opdracht3 {
         }
 
         public virtual Boolean encrypt( byte bitmode, string password, string filename, out byte[] encodedData ) {
-            
+
             byte[] fileData;
             uint crc32;
 
@@ -301,7 +300,7 @@ namespace Opdracht3 {
         }
 
         public virtual Boolean decrypt( byte bitmode, string password, string filename, out byte[] decodeData ) {
-            
+
             byte[] fileData;
             uint crc32;
 
@@ -333,13 +332,13 @@ namespace Opdracht3 {
                 setBlock( ref decodeData, (uint)result, i, fileData.Length, bufsize );
             }
 
-            if ( CRC32.Checksum( decodeData ) != crc32 ){
+            if ( CRC32.Checksum( decodeData ) != crc32 ) {
                 return false;
             }
 
             // Remove the padding
             if ( usePadding ) {
-                stripPadding( ref decodeData );            
+                stripPadding( ref decodeData );
             }
 
             return true;
@@ -359,13 +358,13 @@ namespace Opdracht3 {
         }
 
         protected override long encryptBlock( uint block, uint password, long blocksize, byte bitmode ) {
-            
-            return (long)(block + password);
+
+            return (long)( block + password );
         }
 
         protected override long decryptBlock( uint block, uint password, long blocksize, byte bitmode ) {
-            
-            return (long)(block - password) + (long)( blocksize + 1 );
+
+            return (long)( block - password ) + (long)( blocksize + 1 );
         }
     }
 
@@ -391,7 +390,7 @@ namespace Opdracht3 {
 
         private byte[] permutionBox;
         private uint[] blockpw;
-        
+
         private const byte sboxSize = 4;   // 4 bits
         private const byte sboxMax  = 0xF; // 1111 in bits ( 2 ^ sboxSize - 1 )
         private readonly byte[] substitutionBox = { 0xC, 0x5, 0x6, 0xB, 0x9, 0x0, 0xA, 0xD, 0x3, 0xE, 0xF, 0x8, 0x4, 0x7, 0x1, 0x2 }; // from cipher 'PRESENT'
@@ -399,7 +398,7 @@ namespace Opdracht3 {
         private const byte COUNT = 30;
 
 
-        public CipherSP() : base ( "Substitution Permutation", true) {
+        public CipherSP() : base( "Substitution Permutation", true ) {
 
         }
 
@@ -411,8 +410,8 @@ namespace Opdracht3 {
 
                 // Swap
                 byte tmp    = list[i];
-                list[i] = list[n];
-                list[n] = tmp;
+                list[ i ] = list[ n ];
+                list[ n ] = tmp;
             }
         }
 
@@ -424,18 +423,18 @@ namespace Opdracht3 {
 
                 // Swap
                 uint tmp    = list[i];
-                list[i]     = list[n];
-                list[n]     = tmp;
+                list[ i ]     = list[ n ];
+                list[ n ]     = tmp;
             }
         }
 
         private void setupTable( string password, byte bitmode ) {
 
-            paddingSize     = (byte)(bitmode / 8);
+            paddingSize     = (byte)( bitmode / 8 );
 
             uint _password  = createPassword(password);
-            permutionBox    = new byte[bitmode];
-            blockpw         = new uint[COUNT];
+            permutionBox    = new byte[ bitmode ];
+            blockpw         = new uint[ COUNT ];
 
             // Setup a random generator
             Random random = new Random( (int)_password ); // set the seed to the current password, so we get the same table with the same password
@@ -444,7 +443,7 @@ namespace Opdracht3 {
             // Setup the permutation box
             for ( int i = 0; i < permutionBox.Length; i++ ) {
 
-                permutionBox[i] = (byte)i;
+                permutionBox[ i ] = (byte)i;
             }
 
             // Shuffle the permutation box
@@ -453,11 +452,11 @@ namespace Opdracht3 {
 
             // Generate some passwords from the base password
             for ( int i = 0; i < COUNT; i++ ) {
-                blockpw[i] = CRC32.Checksum( (uint)random.Next() );
+                blockpw[ i ] = CRC32.Checksum( (uint)random.Next() );
             }
 
             // Shuffle the the passwords
-            shuffleList( random, ref blockpw);
+            shuffleList( random, ref blockpw );
         }
 
         private Boolean getBit( uint u, int pos ) {
@@ -475,7 +474,7 @@ namespace Opdracht3 {
         private byte getReverseTableIndex( byte pos, byte[] list ) {
 
             for ( byte i = 0; i < list.Length; i++ ) {
-                if ( list[i] == pos ) {
+                if ( list[ i ] == pos ) {
                     return i;
                 }
             }
@@ -487,7 +486,7 @@ namespace Opdracht3 {
 
             uint result = 0;
 
-            for( int i = 0; i < (maxbits / sboxSize); i++ ) {
+            for ( int i = 0; i < ( maxbits / sboxSize ); i++ ) {
 
                 // Get first block
                 byte subv = (byte)( source & sboxMax );
@@ -495,8 +494,8 @@ namespace Opdracht3 {
                 // Get the substitute for this block
                 if ( reverse ) {
                     subv = getReverseTableIndex( subv, substitutionBox );
-                } else { 
-                    subv = substitutionBox[subv];
+                } else {
+                    subv = substitutionBox[ subv ];
                 }
 
                 // Allocate the new block
@@ -525,11 +524,11 @@ namespace Opdracht3 {
                     if ( reverse ) {
                         idx = getReverseTableIndex( (byte)i, permutionBox );
                     } else {
-                        idx = permutionBox[i];
+                        idx = permutionBox[ i ];
                     }
 
                     // set the bit in the result
-                    result = setBit( result, idx );                    
+                    result = setBit( result, idx );
                 }
             }
 
@@ -573,7 +572,7 @@ namespace Opdracht3 {
             long result = (long)block;
             for ( int i = 0; i < COUNT; i++ ) {
 
-                result = encryptByTable( (uint)result, (uint)( blockpw[i] & blocksize), bitmode );
+                result = encryptByTable( (uint)result, (uint)( blockpw[ i ] & blocksize ), bitmode );
             }
 
             return result;
@@ -586,7 +585,7 @@ namespace Opdracht3 {
 
                 uint _blockpw = blockpw[COUNT - (i+1)]; // reverse password order
 
-                result = decryptByTable( (uint)result, (uint)(_blockpw & blocksize), bitmode );
+                result = decryptByTable( (uint)result, (uint)( _blockpw & blocksize ), bitmode );
             }
 
             return result;
@@ -608,5 +607,5 @@ namespace Opdracht3 {
             return base.encrypt( bitmode, password, filename, out encodedData );
         }
     }
-   
+
 }

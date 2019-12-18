@@ -14,11 +14,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Opdracht8 {
+namespace BoterKaasEieren {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
+
     public enum fieldValue { None, Cross, Circle };
 
     public struct moveScore {
@@ -27,7 +27,7 @@ namespace Opdracht8 {
         public int score;
     }
 
-        
+
     public partial class MainWindow : Window {
 
         private fieldValue[] field;
@@ -50,12 +50,12 @@ namespace Opdracht8 {
             InitializeComponent();
 
             // Create the playing field
-            field = new fieldValue[fieldSize * fieldSize];
+            field = new fieldValue[ fieldSize * fieldSize ];
         }
 
         private Brush hexToColor( string hex ) {
 
-            return (Brush)(new BrushConverter().ConvertFrom(hex));
+            return (Brush)( new BrushConverter().ConvertFrom( hex ) );
         }
 
         private void drawLineOnBoard( int X1, int X2, int Y1, int Y2, Brush color, int thickness ) {
@@ -94,8 +94,8 @@ namespace Opdracht8 {
 
         private void drawSquareX( Rect rect, Brush color, int thickness ) {
 
-            drawLineOnBoard( (int)rect.Left, (int)rect.Right, (int)rect.Top, (int)rect.Bottom, color, thickness);
-            drawLineOnBoard( (int)rect.Left, (int)rect.Right, (int)rect.Bottom, (int)rect.Top, color, thickness);
+            drawLineOnBoard( (int)rect.Left, (int)rect.Right, (int)rect.Top, (int)rect.Bottom, color, thickness );
+            drawLineOnBoard( (int)rect.Left, (int)rect.Right, (int)rect.Bottom, (int)rect.Top, color, thickness );
         }
 
         private void drawSquareO( Rect rect, Brush color, int thickness ) {
@@ -110,12 +110,12 @@ namespace Opdracht8 {
 
             // Move the object to it's x & y
             ellipse.SetValue( Canvas.LeftProperty, rect.Left );
-            ellipse.SetValue( Canvas.TopProperty,  rect.Top );
+            ellipse.SetValue( Canvas.TopProperty, rect.Top );
 
             canvas.Children.Add( ellipse );
         }
 
-        private void drawSquare( int x, int y, Boolean active = false) {
+        private void drawSquare( int x, int y, Boolean active = false ) {
 
             // The square to draw
             int square = x + y * fieldSize;
@@ -128,7 +128,7 @@ namespace Opdracht8 {
             int thickness   = (active) ? 8 : 3;
 
 
-            switch( field[square] ) {
+            switch ( field[ square ] ) {
 
                 case fieldValue.Circle:
                     drawSquareO( rect, color, thickness );
@@ -140,10 +140,10 @@ namespace Opdracht8 {
 
         }
 
-        private void drawSquare( int square, Boolean active = false) {
+        private void drawSquare( int square, Boolean active = false ) {
 
             int x, y;
-            toXY( square, out x, out y);
+            toXY( square, out x, out y );
 
             drawSquare( x, y, active );
         }
@@ -154,8 +154,8 @@ namespace Opdracht8 {
             canvas.Children.Clear();
 
             // Set all fields back to None
-            for( int i = 0; i < field.Length; i++ ) {
-                field[i] = fieldValue.None;
+            for ( int i = 0; i < field.Length; i++ ) {
+                field[ i ] = fieldValue.None;
             }
 
             // Draw the board outline
@@ -166,7 +166,7 @@ namespace Opdracht8 {
 
             // return True if all three squares equal the comp
             for ( int i = 0; i < squares.Length; i++ ) {
-                if ( board[squares[i]] != comp ) {
+                if ( board[ squares[ i ] ] != comp ) {
                     return false;
                 }
             }
@@ -187,7 +187,7 @@ namespace Opdracht8 {
                 sq2 = y * 3 + 1;
                 sq3 = y * 3 + 2;
 
-                if ( isThreeInARow( board, new int[] {sq1, sq2, sq3}, val ) ) {
+                if ( isThreeInARow( board, new int[] { sq1, sq2, sq3 }, val ) ) {
                     return true;
                 }
             }
@@ -199,7 +199,7 @@ namespace Opdracht8 {
                 sq2 = 1 * 3 + x;
                 sq3 = 2 * 3 + x;
 
-                if ( isThreeInARow( board, new int[] {sq1, sq2, sq3 }, val ) ) {
+                if ( isThreeInARow( board, new int[] { sq1, sq2, sq3 }, val ) ) {
                     return true;
                 }
             }
@@ -225,15 +225,15 @@ namespace Opdracht8 {
         private Boolean hasWon( fieldValue val, fieldValue[] board ) {
 
             int d1, d2, d3; // dummy
-            return hasWon( val, board, out d1, out d2, out d3);            
+            return hasWon( val, board, out d1, out d2, out d3 );
         }
 
         private int getFreeSquares( fieldValue[] board ) {
 
             int result = 0;
 
-            for( int i = 0; i < board.Length; i++ ) {
-                if ( board[i] == fieldValue.None ) {
+            for ( int i = 0; i < board.Length; i++ ) {
+                if ( board[ i ] == fieldValue.None ) {
                     result++;
                 }
             }
@@ -248,24 +248,24 @@ namespace Opdracht8 {
             int[] result = new int[ field.Length ];
 
             int squareIndex = 0;
-            for( int i = 0; i < board.Length; i++ ) {
+            for ( int i = 0; i < board.Length; i++ ) {
 
-                if ( board[i] == fieldValue.None ) {
+                if ( board[ i ] == fieldValue.None ) {
 
-                    result[squareIndex] = i;
+                    result[ squareIndex ] = i;
                     squareIndex++;
                 }
             }
 
             // Trim the result
-            Array.Resize( ref result, squareIndex);
+            Array.Resize( ref result, squareIndex );
 
             return result;
         }
 
         private int getBoardScore( fieldValue[] board ) {
 
-            if ( hasWon( ai , board ) ) {
+            if ( hasWon( ai, board ) ) {
                 return 1;
             }
 
@@ -277,12 +277,12 @@ namespace Opdracht8 {
         }
 
         private fieldValue counterPlayer( fieldValue turn ) {
-            
+
             // Switch the turn
             if ( turn == ai ) {
                 return player;
             }
-            
+
             return ai;
         }
 
@@ -293,19 +293,23 @@ namespace Opdracht8 {
             Array.Copy( board, 0, result, 0, board.Length );
 
             // Make the move on the new board
-            result[move] = turn;
-            
+            result[ move ] = turn;
+
             // Return the new board
             return result;
         }
 
 
-        private int getBestMove( fieldValue[] board, fieldValue turn, out int score ) { 
+        private int getBestMove( fieldValue[] board, fieldValue turn, out int score ) {
 
             // Basic
-            switch( getBoardScore( board ) ) {
-                case 1 : score = 1;  return -1;
-                case -1: score = -1; return -1;
+            switch ( getBoardScore( board ) ) {
+                case 1:
+                    score = 1;
+                    return -1;
+                case -1:
+                    score = -1;
+                    return -1;
             }
 
             if ( getFreeSquares( board ) == 0 ) {
@@ -322,14 +326,14 @@ namespace Opdracht8 {
 
                 fieldValue[] newBoard = makeMove( board, moves[i], turn );
                 // Recursion, would we win or loose by making this move ?
-                getBestMove( newBoard, counterPlayer( turn ), out scores[i] );
+                getBestMove( newBoard, counterPlayer( turn ), out scores[ i ] );
             }
 
             int index = 0;
-            
+
             // sore loser: can't win, then draw
             for ( int i = 0; i < scores.Length; i++ ) {
-                if ( scores[i] == 0 ) {
+                if ( scores[ i ] == 0 ) {
                     index = i;
                     break;
                 }
@@ -339,13 +343,13 @@ namespace Opdracht8 {
             for ( int i = 0; i < scores.Length; i++ ) {
 
                 // AI wants to win
-                if ( ( turn == ai ) && ( scores[i] > 0 ) ) {
+                if ( ( turn == ai ) && ( scores[ i ] > 0 ) ) {
                     index = i;
                     break;
                 }
 
                 // Player wants to win as well
-                if ( ( turn == player ) && ( scores[i] < 0 ) ) {
+                if ( ( turn == player ) && ( scores[ i ] < 0 ) ) {
                     index = i;
                     break;
                 }
@@ -353,7 +357,7 @@ namespace Opdracht8 {
             }
 
             score = scores[ index ];
-            return moves[index];
+            return moves[ index ];
         }
 
         private void toXY( int square, out int x, out int y ) {
@@ -361,12 +365,12 @@ namespace Opdracht8 {
             x = square % fieldSize;
             y = square / fieldSize;
         }
-        
+
         private void makeAIMove() {
 
             int bestScore;
             int bestMove = getBestMove( field, ai, out bestScore );
-            
+
             if ( bestMove < 0 ) {
                 return;
             }
@@ -442,13 +446,13 @@ namespace Opdracht8 {
             int square  = squareX + squareY * fieldSize;
 
             // Is this square taken ?
-            if ( field[square] != fieldValue.None ) {
+            if ( field[ square ] != fieldValue.None ) {
 
                 return;
             }
 
             // Make the move
-            field[square] = player;
+            field[ square ] = player;
             // Update the board
             drawSquare( squareX, squareY, false );
 
@@ -479,8 +483,8 @@ namespace Opdracht8 {
 
                 // Increase the displayed score
                 int t;
-                lblScoreAI.Content = int.TryParse( lblScoreAI.Content.ToString(), out t);
-                lblScoreAI.Content = (t+1).ToString();
+                lblScoreAI.Content = int.TryParse( lblScoreAI.Content.ToString(), out t );
+                lblScoreAI.Content = ( t+1 ).ToString();
 
                 // Show a message
                 lblResult.Content = "YOU LOSE";

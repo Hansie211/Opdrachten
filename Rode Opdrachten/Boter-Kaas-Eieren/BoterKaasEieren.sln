@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opdracht4", "Opdracht4.csproj", "{82F7927B-A8E9-4F67-BE5D-C8C88BE17E96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoterKaasEieren", "BoterKaasEieren.csproj", "{0BEBBEB3-6718-4619-8BDF-A9EDDE9FBF7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{82F7927B-A8E9-4F67-BE5D-C8C88BE17E96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82F7927B-A8E9-4F67-BE5D-C8C88BE17E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82F7927B-A8E9-4F67-BE5D-C8C88BE17E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82F7927B-A8E9-4F67-BE5D-C8C88BE17E96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BEBBEB3-6718-4619-8BDF-A9EDDE9FBF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BEBBEB3-6718-4619-8BDF-A9EDDE9FBF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BEBBEB3-6718-4619-8BDF-A9EDDE9FBF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BEBBEB3-6718-4619-8BDF-A9EDDE9FBF7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DB810C63-8E17-4A0E-93BF-BF862C62594B}
+		SolutionGuid = {63FCBB60-160E-4D17-9DAD-9BF139240E0E}
 	EndGlobalSection
 EndGlobal

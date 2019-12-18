@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Opdracht5.Properties {
+namespace RomeinseRekenmachine.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

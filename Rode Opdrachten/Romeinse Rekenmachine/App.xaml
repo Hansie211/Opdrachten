@@ -1,11 +1,11 @@
-﻿<Application x:Class="Opdracht5.App"
+﻿<Application x:Class="RomeinseRekenmachine.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Opdracht5"
+             xmlns:local="clr-namespace:RomeinseRekenmachine"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
-        
+
 
     </Application.Resources>
 </Application>

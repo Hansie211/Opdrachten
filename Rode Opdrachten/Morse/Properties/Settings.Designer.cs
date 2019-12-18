@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Opdracht9.Properties {
+namespace Morse.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Opdracht4 {
+namespace Letterfrequenties {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -42,8 +42,8 @@ namespace Opdracht4 {
 
             FileStream stream;
             try {
-                stream = new FileStream( open.FileName, FileMode.Open, FileAccess.Read);
-            } catch( Exception ex ) {
+                stream = new FileStream( open.FileName, FileMode.Open, FileAccess.Read );
+            } catch ( Exception ex ) {
 
                 Console.WriteLine( ex.Message );
                 return;
@@ -52,8 +52,8 @@ namespace Opdracht4 {
             CharItem[] chars = new CharItem[256];
             // Init the list
             for ( int i = 0; i < chars.Length; i++ ) { /* note to self: if i is a byte, 'i < chars.Length' creates and endless loop */
-                chars[i].value = (byte)( i & 0xFF );
-                chars[i].count = 0;
+                chars[ i ].value = (byte)( i & 0xFF );
+                chars[ i ].count = 0;
             }
 
             // Read in blocks, much faster than byte-by-byte
@@ -63,15 +63,15 @@ namespace Opdracht4 {
 
                 int bytesRead = stream.Read(buff, 0, buff.Length);
 
-                for ( int i = 0; i < bytesRead; i++ ) { 
+                for ( int i = 0; i < bytesRead; i++ ) {
 
                     byte b = buff[i];
 
-                    if ( b < 33) { // non-printable
+                    if ( b < 33 ) { // non-printable
                         continue;
                     }
 
-                    chars[b].count++;
+                    chars[ b ].count++;
                 }
             }
 
@@ -81,14 +81,14 @@ namespace Opdracht4 {
             // Sort the result
             for ( int i = 0; i < chars.Length - 1; i++ ) {
 
-                for( int j = i + 1; j < chars.Length; j++ ) {
+                for ( int j = i + 1; j < chars.Length; j++ ) {
 
-                    if ( chars[i].count < chars[j].count ) {
+                    if ( chars[ i ].count < chars[ j ].count ) {
 
                         // swap
                         CharItem tmp = chars[i];
-                        chars[i] = chars[j];
-                        chars[j] = tmp;
+                        chars[ i ] = chars[ j ];
+                        chars[ j ] = tmp;
                     }
                 }
             }
@@ -100,11 +100,11 @@ namespace Opdracht4 {
             var enc = Encoding.GetEncoding("437"); // Make sure all characters are encoded correctly
             for ( int i = 0; i < chars.Length; i++ ) {
 
-                if ( chars[i].count == 0 ) {
+                if ( chars[ i ].count == 0 ) {
                     break;
                 }
 
-                listBox.Items.Add( String.Format( "[{0:X2}] {1}   -   {2}", chars[i].value, enc.GetString( new byte[] { chars[i].value } ), chars[i].count) );
+                listBox.Items.Add( String.Format( "[{0:X2}] {1}   -   {2}", chars[ i ].value, enc.GetString( new byte[] { chars[ i ].value } ), chars[ i ].count ) );
             }
 
         }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Opdracht3 {
+namespace Versleutelen {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Opdracht9.Properties {
+namespace Morse.Properties {
 
 
     /// <summary>
@@ -38,7 +38,7 @@ namespace Opdracht9.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if ( ( resourceMan == null ) ) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Opdracht9.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Morse.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

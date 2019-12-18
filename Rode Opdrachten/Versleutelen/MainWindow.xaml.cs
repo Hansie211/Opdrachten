@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
 
-namespace Opdracht3 {
+namespace Versleutelen {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -32,7 +32,7 @@ namespace Opdracht3 {
             CipherManager.init();
 
             for ( int i = 0; i < CipherManager.ciphers.Length; i++ ) {
-                boxCipher.Items.Add( CipherManager.ciphers[i].getName() );
+                boxCipher.Items.Add( CipherManager.ciphers[ i ].getName() );
             }
         }
 
@@ -68,8 +68,7 @@ namespace Opdracht3 {
             FileStream stream;
             try {
                 stream = new FileStream( save.FileName, FileMode.Create, FileAccess.Write );
-            }
-            catch {
+            } catch {
                 MessageBox.Show( String.Format( "Kan bestand '{0}' niet aanmaken!", save.FileName ) );
                 return false;
             }
@@ -103,11 +102,11 @@ namespace Opdracht3 {
 
             if ( !CipherManager.encrypt( bitmode, boxCipher.SelectedIndex, password, inputFile, out data ) ) {
 
-                MessageBox.Show(String.Format("Het is niet gelukt bestand '{0}' te versleutelen.", inputFile));
+                MessageBox.Show( String.Format( "Het is niet gelukt bestand '{0}' te versleutelen.", inputFile ) );
                 return;
             }
 
-            if (!SaveFile(data, ref outputFile ) ) {
+            if ( !SaveFile( data, ref outputFile ) ) {
                 return;
             }
 
@@ -151,7 +150,7 @@ namespace Opdracht3 {
                 return;
             }
 
-            Byte.TryParse( ((RadioButton)sender).Tag.ToString(), out bitmode);
+            Byte.TryParse( ( (RadioButton)sender ).Tag.ToString(), out bitmode );
         }
 
     }

@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Opdracht5 {
+namespace RomeinseRekenmachine {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -25,7 +25,16 @@ namespace Opdracht5 {
         public byte op;
     }
 
+    public class UI {
+        public static BitmapSource Backspace { get; set; } = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                           ( (System.Drawing.Bitmap)RomeinseRekenmachine.Resources.backspace ).GetHbitmap(),
+                           IntPtr.Zero,
+                           System.Windows.Int32Rect.Empty,
+                           BitmapSizeOptions.FromEmptyOptions() );
+    }
+
     public partial class MainWindow : Window {
+
 
         const int MAX_NUM = 4000;
         const int MIN_NUM = 0;
@@ -45,13 +54,14 @@ namespace Opdracht5 {
 
         private Boolean canSubtract( char n ) {
 
-            switch( n ) {
+            switch ( n ) {
                 case 'I':
                 case 'X':
                 case 'C':
                 case 'M':
                     return true;
-                default: return false;
+                default:
+                    return false;
             }
 
         }
@@ -60,8 +70,8 @@ namespace Opdracht5 {
 
             uint v = numerals[n];
 
-            for( int i = 0; i < num.Length; i++ ) {
-                if (numerals[num[i]] < v ) {
+            for ( int i = 0; i < num.Length; i++ ) {
+                if ( numerals[ num[ i ] ] < v ) {
                     return i;
                 }
             }
@@ -72,9 +82,9 @@ namespace Opdracht5 {
         private int getWrongNumeralCount( string num, char n ) {
             int result = 0;
 
-            for (int i = 0; i < num.Length; i++ ) {
+            for ( int i = 0; i < num.Length; i++ ) {
 
-                if (num[i] == n ) {
+                if ( num[ i ] == n ) {
                     continue;
                 }
 
@@ -83,7 +93,7 @@ namespace Opdracht5 {
 
             return result;
         }
-            
+
         private uint numeralToInt( string num ) {
 
             // Easy
@@ -102,10 +112,10 @@ namespace Opdracht5 {
 
                 if ( p > -1 ) {
 
-                    breakdown[j] = num.Substring(0, p + 1);
-                    num = num.Substring(p + 1);
+                    breakdown[ j ] = num.Substring( 0, p + 1 );
+                    num = num.Substring( p + 1 );
                 } else {
-                    breakdown[j] = "";
+                    breakdown[ j ] = "";
                 }
 
                 j--;
@@ -114,46 +124,46 @@ namespace Opdracht5 {
             // Start calculating !
             uint result = 0;
 
-            for( int i = 0; i < numerals.Count; i++ ) {
+            for ( int i = 0; i < numerals.Count; i++ ) {
 
                 char n = numerals.ElementAt(i).Key;
 
                 // Check if a chunk contains a value lower number than itself. This is allowed, but only under special circumstances
                 int l = getIndexOfLower(breakdown[i], n);
-                if ( l > -1 ){
+                if ( l > -1 ) {
 
 
-                    if ( getWrongNumeralCount(breakdown[i], n) > 1 ) {
+                    if ( getWrongNumeralCount( breakdown[ i ], n ) > 1 ) {
 
                         // This is just wron formatting, eg: VIX -> XVI
-                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[i], "De volgorde is incorrect.\n\nUitleg: Romeinse cijfers gaan van groot naar klein.\nDus XVI (16) mag maar VIX niet." ) );
+                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[ i ], "De volgorde is incorrect.\n\nUitleg: Romeinse cijfers gaan van groot naar klein.\nDus XVI (16) mag maar VIX niet." ) );
                     }
 
                     // It should be the second last position
-                    if ( l != breakdown[i].Length - 2 ){
+                    if ( l != breakdown[ i ].Length - 2 ) {
 
                         // Wrong place for subtraction, eg: XIXX -> XXIX
-                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[i], "De getalsvolgorde is incorrect.\n\nUitleg: Een kleiner getal mag alleen voor een groter getal staan als deze de laatste in zijn reeks is.\nDus XXIX (29) mag maar XIXX niet." ) );
+                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[ i ], "De getalsvolgorde is incorrect.\n\nUitleg: Een kleiner getal mag alleen voor een groter getal staan als deze de laatste in zijn reeks is.\nDus XXIX (29) mag maar XIXX niet." ) );
                     }
 
                     // It should _NOT_ be a 'half' value, like 5 or 50
-                    if ( !canSubtract( breakdown[i][l] ) ) {
+                    if ( !canSubtract( breakdown[ i ][ l ] ) ) {
 
                         // Wrong subtractor, eg: VX -> V
-                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[i], "Verkeerde subtractor.\n\nUitleg: Alleen I, X, C en M mogen als subtractor worden gebruikt.\nBijvoorbeeld: VX moet V (5) zijn, en VL moet XLV (45) zijn. IX (9) mag wel." ) );
+                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[ i ], "Verkeerde subtractor.\n\nUitleg: Alleen I, X, C en M mogen als subtractor worden gebruikt.\nBijvoorbeeld: VX moet V (5) zijn, en VL moet XLV (45) zijn. IX (9) mag wel." ) );
                     }
 
                     // Check the chunk size
-                    if ( (!canSubtract(n)) && (breakdown[i].Length > 2) ) {
+                    if ( ( !canSubtract( n ) ) && ( breakdown[ i ].Length > 2 ) ) {
 
                         // Wrong numeral choice, eg: VIV -> IX
-                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[i], "Verkeerde herhaling.\n\nUitleg: Dit getal kan korter worden geschreven.\nBijvoorbeeld: VIV moet IX (9) zijn." ) );
+                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[ i ], "Verkeerde herhaling.\n\nUitleg: Dit getal kan korter worden geschreven.\nBijvoorbeeld: VIV moet IX (9) zijn." ) );
                     }
 
-                    if ( (canSubtract(n)) && (breakdown[i].Length > 5 ) ){
+                    if ( ( canSubtract( n ) ) && ( breakdown[ i ].Length > 5 ) ) {
 
                         // Wrong numeral choice, eg: XXXXVX -> VL
-                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[i], "Verkeerde herhaling.\n\nUitleg: Dit getal kan korter worden geschreven.\nBijvoorbeeld: XXXXVX moet VL (45) zijn." ) );
+                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[ i ], "Verkeerde herhaling.\n\nUitleg: Dit getal kan korter worden geschreven.\nBijvoorbeeld: XXXXVX moet VL (45) zijn." ) );
                     }
 
                     // All good, at it to the result!
@@ -161,33 +171,33 @@ namespace Opdracht5 {
                     // XXIX = (3 * X) - I = 29
                     uint sub = numerals[breakdown[i][l]];
 
-                    result += (uint)( (breakdown[i].Length - 1) * numerals[n] );
+                    result += (uint)( ( breakdown[ i ].Length - 1 ) * numerals[ n ] );
                     result -= sub;
                 } else {
 
                     // Check the chunk size
-                    if ( (!canSubtract(n) ) && (breakdown[i].Length > 1) ) {
+                    if ( ( !canSubtract( n ) ) && ( breakdown[ i ].Length > 1 ) ) {
 
                         // Wrong numeral choice, eg: VV -> X
-                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[i], "Verkeerde herhaling.\n\nUitleg: Dit getal kan korter worden geschreven.\nBijvoorbeeld: VV moet X (10) zijn." ) );
+                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[ i ], "Verkeerde herhaling.\n\nUitleg: Dit getal kan korter worden geschreven.\nBijvoorbeeld: VV moet X (10) zijn." ) );
                     }
 
-                    if ( (canSubtract(n) ) && (breakdown[i].Length > 3) ) {
+                    if ( ( canSubtract( n ) ) && ( breakdown[ i ].Length > 3 ) ) {
 
                         // Wrong numeral choice, eg: IIII -> IV
-                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[i], "Verkeerde herhaling.\n\nUitleg: Dit getal kan korter worden geschreven.\nBijvoorbeeld: IIII moet IV (4) zijn." ) );
+                        throw new Exception( String.Format( "Opbouwfout bij {0}. {1}", breakdown[ i ], "Verkeerde herhaling.\n\nUitleg: Dit getal kan korter worden geschreven.\nBijvoorbeeld: IIII moet IV (4) zijn." ) );
                     }
 
                     // All good, at it to the result!
 
                     // MMM = 3 * 1000
-                    result += (uint)( breakdown[i].Length * numerals[n] );
+                    result += (uint)( breakdown[ i ].Length * numerals[ n ] );
                 }
             }
 
             return result;
         }
-        
+
         private string intToNumeral( uint dec ) {
 
             string result = "";
@@ -195,18 +205,18 @@ namespace Opdracht5 {
                 return ">MMMM";
             }
 
-            for( int i = numerals.Count - 1; i > -1; i-- ) {
+            for ( int i = numerals.Count - 1; i > -1; i-- ) {
 
                 char n = numerals.ElementAt(i).Key;
                 uint v = numerals[n];
 
-                while( dec >= v ) {
+                while ( dec >= v ) {
 
                     dec -= v;
                     result += n.ToString();
                 }
 
-                for( int j = i - 1; j > -1; j-- ) {
+                for ( int j = i - 1; j > -1; j-- ) {
 
                     char n2 = numerals.ElementAt(j).Key;
 
@@ -239,7 +249,7 @@ namespace Opdracht5 {
                 uint dec    = numeralToInt(num);
 
                 if ( dec != i ) {
-                    throw new Exception( String.Format("Error decoding {0} ({1}). Result is {2}", num, i, dec) );
+                    throw new Exception( String.Format( "Error decoding {0} ({1}). Result is {2}", num, i, dec ) );
                 }
 
                 Console.WriteLine( "{0} -> {1} -> {2}", i, num, dec );
@@ -259,7 +269,7 @@ namespace Opdracht5 {
             numerals.Add( 'D', 500 );
             numerals.Add( 'M', 1000 );
 
-            allowedChars = new Regex("^[IVXLCDM+\\-*/() ]*$");
+            allowedChars = new Regex( "^[IVXLCDM+\\-*/() ]*$" );
 
             // check();            
         }
@@ -271,22 +281,22 @@ namespace Opdracht5 {
                 newCalculation = false;
             }
 
-            edtSum.Text += ((Button)sender).Content.ToString();
+            edtSum.Text += ( (Button)sender ).Content.ToString();
         }
 
         private Boolean isNumeral( char c ) {
 
-            return numerals.ContainsKey(c);
+            return numerals.ContainsKey( c );
         }
 
         private int getCharCount( char needle, string haystack ) {
 
-            return haystack.Split(needle).Length;
+            return haystack.Split( needle ).Length;
         }
-        
+
         private Boolean isOperator( char c, Boolean allowBrackets = true ) {
 
-            if ( operators.Contains(c) ) {
+            if ( operators.Contains( c ) ) {
                 return true;
             }
 
@@ -301,9 +311,9 @@ namespace Opdracht5 {
 
         private Boolean checkSyntax( ref string haystack ) {
 
-            if (!allowedChars.IsMatch( haystack ) ) {
+            if ( !allowedChars.IsMatch( haystack ) ) {
                 // Illegal characters
-                throw new Exception("Sommige karakters worden niet herkent.");
+                throw new Exception( "Sommige karakters worden niet herkent." );
             }
 
             // Filter double spaces
@@ -311,73 +321,73 @@ namespace Opdracht5 {
 
             if ( getCharCount( '(', haystack ) != getCharCount( ')', haystack ) ) {
                 // Brackets dont match
-                throw new Exception("Haakjes matchen niet!");
+                throw new Exception( "Haakjes matchen niet!" );
             }
 
 
-            if ( !isNumeral( haystack[0] ) && ( haystack[0] != '(' ) ) {
+            if ( !isNumeral( haystack[ 0 ] ) && ( haystack[ 0 ] != '(' ) ) {
                 // Cannot start with operator
-                throw new Exception("Som kan niet beginnen met een opdracht!");
+                throw new Exception( "Som kan niet beginnen met een opdracht!" );
             }
 
-            if ( !isNumeral( haystack[haystack.Length - 1] ) && ( haystack[haystack.Length - 1] != ')' ) ) {
+            if ( !isNumeral( haystack[ haystack.Length - 1 ] ) && ( haystack[ haystack.Length - 1 ] != ')' ) ) {
                 // Cannot end with operator
-                throw new Exception("Som kan niet eindigen met een opdracht!");
+                throw new Exception( "Som kan niet eindigen met een opdracht!" );
             }
 
             int i;
 
             for ( i = 1; i < haystack.Length - 1; i++ ) { // haystack should be trimmed, so first & last are never ' '
 
-                if ( haystack[i] == ' '){
+                if ( haystack[ i ] == ' ' ) {
 
-                    if ( !isOperator(haystack[i-1]) && !isOperator(haystack[i+1]) ) {
+                    if ( !isOperator( haystack[ i-1 ] ) && !isOperator( haystack[ i+1 ] ) ) {
                         // Spaces must be paired with operators somehow, cannot be paired with only numerals
-                        throw new Exception("Spatie is verkeerd geplaatst!");
+                        throw new Exception( "Spatie is verkeerd geplaatst!" );
                     }
                 }
 
             }
 
             // Remove all spaces
-            haystack = haystack.Replace(" ", "");
+            haystack = haystack.Replace( " ", "" );
 
-            for( i = 1; i < haystack.Length - 1; i++ ) { // it does not start nor end with an operator
+            for ( i = 1; i < haystack.Length - 1; i++ ) { // it does not start nor end with an operator
 
-                if ( isOperator(haystack[i], false) ) {
+                if ( isOperator( haystack[ i ], false ) ) {
 
-                    if ( isOperator(haystack[i+1], false) || isOperator(haystack[i-1], false) ) {
+                    if ( isOperator( haystack[ i+1 ], false ) || isOperator( haystack[ i-1 ], false ) ) {
                         // Cannot have double operators (++)
-                        throw new Exception("Dubbele opdrachten zijn niet toegestaan!");
+                        throw new Exception( "Dubbele opdrachten zijn niet toegestaan!" );
                     }
 
                 }
 
-                if ( haystack[i] == '(' ){
-                    
-                    if ( !isOperator(haystack[i - 1]) ) {
+                if ( haystack[ i ] == '(' ) {
 
-                        if ( haystack[i - 1] != '(' ) {
+                    if ( !isOperator( haystack[ i - 1 ] ) ) {
+
+                        if ( haystack[ i - 1 ] != '(' ) {
                             // V(V)
-                            throw new Exception("'(' moet verbonden zijn met een operator!");
+                            throw new Exception( "'(' moet verbonden zijn met een operator!" );
                         }
                     }
 
-                    if ( isOperator(haystack[i + 1], false) ) {
+                    if ( isOperator( haystack[ i + 1 ], false ) ) {
                         // (+V)
-                        throw new Exception("'(' mag niet worden gevold door een opdracht!");
+                        throw new Exception( "'(' mag niet worden gevold door een opdracht!" );
                     }
 
-                } else if (haystack[i] == ')' ) {
+                } else if ( haystack[ i ] == ')' ) {
 
-                    if ( isOperator( haystack[i - 1] ) ) {
+                    if ( isOperator( haystack[ i - 1 ] ) ) {
                         // (V+)
                         throw new Exception( "')' mag niet zijn verbonden met een opdracht!" );
                     }
 
-                    if ( !isOperator( haystack[i + 1], false ) ) {
+                    if ( !isOperator( haystack[ i + 1 ], false ) ) {
 
-                        if ( haystack[i + 1] != ')' ) {
+                        if ( haystack[ i + 1 ] != ')' ) {
                             // (V)V
                             throw new Exception( "')' moet worden gevold door een opdracht!" );
                         }
@@ -395,20 +405,20 @@ namespace Opdracht5 {
 
             int level = 0;
 
-            for( int i = start; i < text.Length; i++ ) {
+            for ( int i = start; i < text.Length; i++ ) {
 
-                if (text[i] == '(' ) {
+                if ( text[ i ] == '(' ) {
 
                     level++;
 
-                    for( int j = i + 1; j < text.Length; j++ ) {
+                    for ( int j = i + 1; j < text.Length; j++ ) {
 
-                        if ( text[j] == '(' ) {
+                        if ( text[ j ] == '(' ) {
                             level++;
                             continue;
                         }
 
-                        if ( text[j] != ')' ) {
+                        if ( text[ j ] != ')' ) {
                             continue;
                         }
 
@@ -418,7 +428,7 @@ namespace Opdracht5 {
                             continue;
                         }
 
-                        return text.Substring( i + 1, (j - i) - 1 );
+                        return text.Substring( i + 1, ( j - i ) - 1 );
                     }
 
 
@@ -429,7 +439,7 @@ namespace Opdracht5 {
             return "";
         }
 
-        private byte toOperator(char c ) {
+        private byte toOperator( char c ) {
 
             switch ( c ) {
                 case '+':
@@ -453,56 +463,56 @@ namespace Opdracht5 {
             int i;
 
             // Move every part 'foreward'
-            for( i = 0; i < parts.Length - 1; i++ ) {
+            for ( i = 0; i < parts.Length - 1; i++ ) {
 
-                if ( parts[i].op != op ) {
+                if ( parts[ i ].op != op ) {
                     continue;
                 }
 
-                switch( op ) {
+                switch ( op ) {
 
                     case OP_PLUS:
-                        outcome = parts[i].value + parts[i + 1].value;
+                        outcome = parts[ i ].value + parts[ i + 1 ].value;
                         break;
                     case OP_MINUS:
 
-                        if ( parts[i].value < parts[i + 1].value ) { // cannot do less than zero
-                            outcome = 0; 
+                        if ( parts[ i ].value < parts[ i + 1 ].value ) { // cannot do less than zero
+                            outcome = 0;
                             break;
                         }
 
-                        outcome = parts[i].value - parts[i + 1].value;
+                        outcome = parts[ i ].value - parts[ i + 1 ].value;
                         break;
                     case OP_MULT:
-                        outcome = parts[i].value * parts[i + 1].value;
+                        outcome = parts[ i ].value * parts[ i + 1 ].value;
                         break;
                     case OP_DIV:
-                        outcome = parts[i].value / parts[i + 1].value;
+                        outcome = parts[ i ].value / parts[ i + 1 ].value;
                         break;
                     default:
                         throw new Exception( String.Format( "Illegaal instructie '{0}'", op ) );
                 }
 
-                parts[i].op         = OP_NONE; // mark as 'done'
-                parts[i+1].value    = outcome;
+                parts[ i ].op         = OP_NONE; // mark as 'done'
+                parts[ i+1 ].value    = outcome;
             }
 
             // Trim the list
             i = 0;
-            for( int j = 0; j < parts.Length - 1; j++ ) { 
-                
-                if ( parts[j].op == OP_NONE ) {
+            for ( int j = 0; j < parts.Length - 1; j++ ) {
+
+                if ( parts[ j ].op == OP_NONE ) {
                     continue;
                 }
 
-                parts[i] = parts[j];
+                parts[ i ] = parts[ j ];
                 i++;
             }
 
             // Always copy the end result
-            parts[i] = parts[ parts.Length - 1 ];
+            parts[ i ] = parts[ parts.Length - 1 ];
             // Trim
-            Array.Resize(ref parts, i + 1);
+            Array.Resize( ref parts, i + 1 );
         }
 
         private uint calculate( string sum ) {
@@ -511,45 +521,45 @@ namespace Opdracht5 {
             SumPart[] parts = new SumPart[ 100 ];
             int partIndex   = -1;
 
-            while ( sum.Length > 0 ) { 
+            while ( sum.Length > 0 ) {
 
                 partIndex++;
 
                 if ( partIndex > parts.Length - 1 ) {
-                    throw new Exception("Te veel argumenten!");
+                    throw new Exception( "Te veel argumenten!" );
                 }
 
-                if ( sum[0] == '(' ) {
+                if ( sum[ 0 ] == '(' ) {
 
                     string bracketPart = getTextBetweenBrackets( sum );
                     int bracketPartLen = bracketPart.Length + 2; // '(' && ')'
-                    parts[partIndex].value = calculate( bracketPart );
+                    parts[ partIndex ].value = calculate( bracketPart );
 
                     if ( bracketPartLen >= sum.Length ) { // brackets where last part
-                        parts[partIndex].op = OP_NONE;
+                        parts[ partIndex ].op = OP_NONE;
                         break;
                     }
-                    parts[partIndex].op = toOperator( sum[ bracketPartLen ] );
+                    parts[ partIndex ].op = toOperator( sum[ bracketPartLen ] );
 
-                    sum = sum.Substring( bracketPartLen + 1);
+                    sum = sum.Substring( bracketPartLen + 1 );
 
                     continue;
                 }
 
                 Boolean operatorFound = false;
 
-                for( int i = 0; i < sum.Length; i++ ) { 
-                    
-                    if ( !isOperator( sum[i] ) ) {
+                for ( int i = 0; i < sum.Length; i++ ) {
+
+                    if ( !isOperator( sum[ i ] ) ) {
                         continue;
                     }
 
-                    if ( isOperator(sum[i], false ) ) {
+                    if ( isOperator( sum[ i ], false ) ) {
 
-                        parts[ partIndex ].value    = numeralToInt( sum.Substring(0, i) );
-                        parts[ partIndex ].op       = toOperator(sum[i]);
+                        parts[ partIndex ].value    = numeralToInt( sum.Substring( 0, i ) );
+                        parts[ partIndex ].op       = toOperator( sum[ i ] );
 
-                        sum = sum.Substring(i + 1);
+                        sum = sum.Substring( i + 1 );
 
                         operatorFound = true;
                         break;
@@ -562,7 +572,7 @@ namespace Opdracht5 {
                 }
 
                 // End of sum
-                parts[ partIndex ].value = numeralToInt(sum);
+                parts[ partIndex ].value = numeralToInt( sum );
                 parts[ partIndex ].op    = OP_NONE;
                 break;
             }
@@ -574,8 +584,8 @@ namespace Opdracht5 {
             calculateParts( ref parts, OP_DIV );
             calculateParts( ref parts, OP_PLUS );
             calculateParts( ref parts, OP_MINUS );
-            
-            return parts[0].value;
+
+            return parts[ 0 ].value;
         }
 
         private void BtnEqual_Click( object sender, RoutedEventArgs e ) {
@@ -588,14 +598,14 @@ namespace Opdracht5 {
 
             currentText = currentText.ToUpper();
 
-            try { 
+            try {
                 // Verify the sum syntax
                 checkSyntax( ref currentText );
 
                 // Verify numerals
                 string[] sumNumerals    = currentText.Split( new char[] { '+', '-', '*', '/', '(', ')' } );
-                for( int i = 0; i < sumNumerals.Length; i++ ) {
-                    numeralToInt( sumNumerals[i] );
+                for ( int i = 0; i < sumNumerals.Length; i++ ) {
+                    numeralToInt( sumNumerals[ i ] );
                 }
 
             } catch ( Exception exp ) {
@@ -611,7 +621,7 @@ namespace Opdracht5 {
         }
 
         private void BtnClear_Click( object sender, RoutedEventArgs e ) {
-            
+
             edtSum.Clear();
         }
 
@@ -621,7 +631,7 @@ namespace Opdracht5 {
                 return;
             }
 
-            edtSum.Text = edtSum.Text.Substring(0, edtSum.Text.Length - 1);
+            edtSum.Text = edtSum.Text.Substring( 0, edtSum.Text.Length - 1 );
         }
     }
 }
