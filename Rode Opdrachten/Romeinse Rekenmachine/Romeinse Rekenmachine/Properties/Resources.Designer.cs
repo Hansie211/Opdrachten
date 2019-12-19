@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RomeinseRekenmachine.Properties {
+namespace Romeinse_Rekenmachine.Properties {
     using System;
 
 
@@ -39,7 +39,7 @@ namespace RomeinseRekenmachine.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if ( object.ReferenceEquals( resourceMan, null ) ) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("RomeinseRekenmachine.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Romeinse_Rekenmachine.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

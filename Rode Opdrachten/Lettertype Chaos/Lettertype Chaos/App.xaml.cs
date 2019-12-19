@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace LettertypeChaos {
+namespace Lettertype_Chaos {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

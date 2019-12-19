@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RomeinseRekenmachine {
+namespace Romeinse_Rekenmachine {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -27,7 +27,7 @@ namespace RomeinseRekenmachine {
 
     public class UI {
         public static BitmapSource Backspace { get; set; } = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                           ( (System.Drawing.Bitmap)RomeinseRekenmachine.Resources.backspace ).GetHbitmap(),
+                           ( (System.Drawing.Bitmap)Romeinse_Rekenmachine.Resources.backspace ).GetHbitmap(),
                            IntPtr.Zero,
                            System.Windows.Int32Rect.Empty,
                            BitmapSizeOptions.FromEmptyOptions() );

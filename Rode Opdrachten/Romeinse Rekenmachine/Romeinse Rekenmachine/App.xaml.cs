@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace RomeinseRekenmachine {
+namespace Romeinse_Rekenmachine {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RomeinseRekenmachine.Properties {
+namespace Lettertype_Chaos.Properties {
 
 
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
